@@ -1,51 +1,51 @@
-import Link from "next/link";
 import ContactButton from "@/components/ContactButton";
-import { packages, scarcityMessage } from "@/data/siteData";
+import { packages, sectionCopy } from "@/data/siteData";
 
 export default function Packages() {
   return (
     <section
-      id="programs"
-      className="bg-warm-white py-24 md:py-32"
-      aria-labelledby="programs-heading"
+      id="pricing"
+      className="section-padding bg-white"
+      aria-labelledby="pricing-heading"
     >
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="reveal mx-auto max-w-2xl text-center">
-          <p className="section-eyebrow">Training Packages</p>
-          <h2 id="programs-heading" className="section-heading">
-            Choose Your Level
+        <div className="reveal section-header">
+          <h2 id="pricing-heading" className="section-heading text-black">
+            Start Your Transformation Journey{" "}
+            <span className="text-coral">Today</span>
           </h2>
-          <p className="mt-4 text-lg text-charcoal/70">
-            Every program is 100% personalized. Pick the level of support that
-            matches where you are — and where you&apos;re going.
-          </p>
+          <p className="section-subheading">{sectionCopy.pricing.subheading}</p>
         </div>
 
-        <div className="mt-16 grid gap-8 lg:grid-cols-3">
+        <div className="grid gap-8 lg:grid-cols-3">
           {packages.map((pkg) => (
             <article
               key={pkg.name}
-              className={`reveal relative flex flex-col rounded-3xl p-8 transition hover:-translate-y-1 hover:shadow-xl ${
-                pkg.popular
-                  ? "border-2 border-coral bg-white shadow-lg ring-4 ring-coral/10"
-                  : "border border-charcoal/10 bg-white"
+              className={`reveal relative flex flex-col rounded-2xl p-8 ${
+                pkg.featured
+                  ? "bg-black text-white"
+                  : "border border-black/15 bg-white text-black"
               }`}
             >
-              {pkg.popular && (
-                <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-coral px-4 py-1 text-xs font-bold uppercase tracking-wider text-white">
-                  Most Popular
+              {pkg.badge && (
+                <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-coral px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
+                  {pkg.badge}
                 </span>
               )}
-              <h3 className="font-display text-2xl font-bold uppercase text-charcoal">
+              <p className="font-display text-3xl font-bold">{pkg.price}</p>
+              <h3 className="mt-2 font-display text-xl font-bold uppercase">
                 {pkg.name}
               </h3>
-              <p className="mt-2 text-3xl font-bold text-coral">{pkg.price}</p>
-              <p className="mt-3 text-sm text-charcoal/60">{pkg.description}</p>
+              <p
+                className={`mt-3 text-sm ${pkg.featured ? "text-white/70" : "text-black/60"}`}
+              >
+                {pkg.description}
+              </p>
               <ul className="mt-8 flex-1 space-y-3">
                 {pkg.features.map((feature) => (
                   <li
                     key={feature}
-                    className="flex items-start gap-3 text-sm text-charcoal/80"
+                    className={`flex items-start gap-3 text-sm ${pkg.featured ? "text-white/85" : "text-black/80"}`}
                   >
                     <svg
                       className="mt-0.5 h-5 w-5 shrink-0 text-coral"
@@ -64,7 +64,7 @@ export default function Packages() {
               </ul>
               <ContactButton
                 className={`mt-8 w-full ${
-                  pkg.popular ? "btn-primary" : "btn-ghost"
+                  pkg.featured ? "btn-primary" : "btn-ghost"
                 }`}
               >
                 {pkg.cta}
@@ -72,10 +72,6 @@ export default function Packages() {
             </article>
           ))}
         </div>
-
-        <p className="reveal mt-10 text-center text-sm font-semibold uppercase tracking-wider text-coral">
-          {scarcityMessage}
-        </p>
       </div>
     </section>
   );

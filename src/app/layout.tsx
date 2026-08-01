@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Barlow_Condensed, DM_Sans } from "next/font/google";
+import { Barlow_Condensed, Inter } from "next/font/google";
 import JsonLd from "@/components/JsonLd";
 import { absoluteUrl, siteConfig } from "@/lib/seo";
 import "./globals.css";
 
-const display = Barlow_Condensed({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
-  variable: "--font-display",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: "--font-inter",
 });
 
-const body = DM_Sans({
+const barlowCondensed = Barlow_Condensed({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-body",
+  weight: ["600", "700", "800"],
+  variable: "--font-barlow",
 });
 
 export const metadata: Metadata = {
@@ -65,7 +65,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable}`}>
+    <html lang="en" className={`${inter.variable} ${barlowCondensed.variable}`}>
       <body className="min-h-screen pb-20 font-body antialiased md:pb-0">
         <JsonLd />
         {children}

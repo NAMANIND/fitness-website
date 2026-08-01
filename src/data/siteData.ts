@@ -3,22 +3,24 @@ export function splash(width: number, height: number, keyword: string) {
 }
 
 export const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Programs", href: "#programs" },
-  { label: "Results", href: "#results" },
-  { label: "Free Workout", href: "#free-workout" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#home" },
+  { label: "About", href: "/#about" },
+  { label: "Programs", href: "/#programs" },
+  { label: "Shop", href: "/#shop" },
+  { label: "Supplements", href: "/#supplements" },
+  { label: "Contact", href: "/#contact" },
 ] as const;
 
-export const socialProof =
-  "500+ clients transformed · 4.9★ rated · Featured in Women's Health";
+export const footerNavLinks = [
+  { label: "Shop", href: "/#shop" },
+  { label: "Programs", href: "/#programs" },
+  { label: "Supplements", href: "/#supplements" },
+  { label: "About", href: "/#about" },
+] as const;
 
-export const trustBadges = [
-  "NASM Certified",
-  "100K+ Instagram Followers",
-  "Featured on Fitfluencer Weekly",
-  "Online Coaching Worldwide",
+export const footerLegalLinks = [
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms & Conditions", href: "/terms" },
 ] as const;
 
 export const aboutStats = [
@@ -27,78 +29,125 @@ export const aboutStats = [
   { value: "Worldwide", label: "Online & Remote" },
 ] as const;
 
-export const methodSteps = [
+export const aboutContent = {
+  eyebrow: "About Sara",
+  heading: "Your Fitness Coach,",
+  headingAccent: "Not Another Influencer",
+  paragraphs: [
+    "Sara Fiorvento is a Sydney based fitness coach on a mission to make strength simple, sustainable, and achievable for everyone. Blending the power of powerlifting with the artistry of bodybuilding, Sara's programs are built on one belief: strength is a foundation, not a finish line. Master the basics, train with intention, and the results follow.",
+    "With a community of hundreds of thousands, Sara is known for keeping it real, no filters, no shortcuts, just proven training and genuine support.",
+  ],
+  tagline: "Ready to feel unstoppable? You're in the right place.",
+} as const;
+
+export const exercisePrograms = [
   {
-    step: "01",
-    title: "Assess",
+    title: "LVLUP 2026",
     description:
-      "We start with your goals, schedule, training history, and what hasn't worked before. No generic templates — your plan begins with you.",
-    icon: "clipboard",
+      "A 6 week, high-energy program designed to push you further, build more strength and take your fitness to the next level.",
+    image: splash(400, 600, "gym fitness woman"),
+    isNew: true,
+    theme: "night",
+    cta: "Start Now",
   },
   {
-    step: "02",
-    title: "Plan",
+    title: "HIIT 20M",
     description:
-      "I build a custom program around your life: workouts, nutrition guidance, and accountability that fits your real routine, not an ideal one.",
-    icon: "chart",
+      "Short, intense sessions that torch calories and build endurance — perfect when you're tight on time.",
+    image: splash(400, 600, "hiit workout"),
+    isNew: false,
+    theme: "day",
+    cta: "Start Now",
   },
   {
-    step: "03",
-    title: "Transform",
+    title: "Strength Builder",
     description:
-      "Weekly check-ins, progress tracking, and plan adjustments keep you moving. Strength builds, confidence follows, and results stick.",
-    icon: "star",
+      "Progressive lifting plans focused on building real strength with proper form and smart programming.",
+    image: splash(400, 600, "strength training"),
+    isNew: false,
+    theme: "night",
+    cta: "Start Now",
+  },
+  {
+    title: "Core & Burn",
+    description:
+      "Targeted core work and full-body burn sessions for beginners ready to build a solid foundation.",
+    image: splash(400, 600, "core workout"),
+    isNew: false,
+    theme: "day",
+    cta: "Start Now",
+  },
+  {
+    title: "Full Body Flow",
+    description:
+      "Balanced training that hits every muscle group — strength, mobility, and conditioning in one.",
+    image: splash(400, 600, "full body workout"),
+    isNew: false,
+    theme: "night",
+    cta: "Start Now",
+  },
+  {
+    title: "Glute Lab",
+    description:
+      "Glute-focused programming to build shape, strength, and power without neglecting the rest of your training.",
+    image: splash(400, 600, "leg workout"),
+    isNew: true,
+    theme: "day",
+    cta: "Start Now",
   },
 ] as const;
 
 export const packages = [
   {
-    name: "Kickstart",
-    price: "Starting at $97/mo",
-    description: "Perfect for self-starters who want structure and guidance.",
+    name: "Essentials",
+    price: "$10/mo",
+    description: "Everything you need to start building strength on your own schedule.",
     features: [
-      "Custom 4-week training plan",
-      "Weekly check-ins via app",
+      "Custom training program",
       "Exercise demo library",
-      "Nutrition basics & macro guide",
+      "Weekly check-ins via app",
+      "Nutrition basics guide",
+      "Community access",
     ],
     cta: "Get Started",
-    popular: false,
+    featured: true,
+    badge: "50% OFF",
   },
   {
     name: "Transform",
-    price: "Starting at $197/mo",
-    description: "My most popular program for women ready to commit.",
+    price: "$16.66/mo",
+    description: "More support and accountability for women ready to commit.",
     features: [
       "Fully personalized programming",
-      "Bi-weekly video coaching calls",
-      "Macro coaching & meal guidance",
+      "Bi-weekly coaching calls",
+      "Macro coaching guidance",
       "24/7 DM support",
       "Progress photo reviews",
     ],
-    cta: "Work With Me",
-    popular: true,
+    cta: "Get Started",
+    featured: false,
+    badge: null,
   },
   {
     name: "Elite 1:1",
-    price: "Starting at $397/mo",
+    price: "$19.99/mo",
     description: "Maximum accountability for serious transformation.",
     features: [
       "Daily accountability check-ins",
       "Weekly 1:1 video calls",
       "Custom meal guidance",
-      "Priority support & adjustments",
+      "Priority support",
       "Competition prep optional",
     ],
-    cta: "Apply Now",
-    popular: false,
+    cta: "Get Started",
+    featured: false,
+    badge: null,
   },
 ] as const;
 
 export const clientResults = [
   {
     name: "Jessica M.",
-    duration: "12 weeks",
     quote:
       "I finally stopped yo-yo dieting. Sara taught me to lift heavy, eat enough, and trust the process. Down 18 lbs and stronger than ever.",
     beforeImage: splash(400, 500, "yoga"),
@@ -106,7 +155,6 @@ export const clientResults = [
   },
   {
     name: "Amanda R.",
-    duration: "16 weeks",
     quote:
       "As a busy mom of two, I thought fitness wasn't possible. Sara built workouts I could do in 30 minutes. I have energy again.",
     beforeImage: splash(400, 500, "running"),
@@ -114,7 +162,6 @@ export const clientResults = [
   },
   {
     name: "Taylor K.",
-    duration: "8 weeks",
     quote:
       "I was intimidated by the gym. Sara's coaching gave me confidence and proper form. I actually look forward to training now.",
     beforeImage: splash(400, 500, "stretch"),
@@ -122,69 +169,44 @@ export const clientResults = [
   },
 ] as const;
 
-export const testimonials = [
+export const credibilityItems = [
+  "Commonwealth Powerlifting Medalist",
+  "BCPA Medalist",
+  "CPU Medalist",
+  "350K+ Instagram Followers",
+] as const;
+
+export const shopItems = [
+  { image: splash(400, 600, "fitness apparel"), alt: "Fitness leggings and sports top" },
+  { image: splash(400, 600, "gym wear"), alt: "Athletic wear set" },
+  { image: splash(400, 600, "workout clothes"), alt: "Workout outfit" },
+] as const;
+
+export const shopCtaUrl = "https://www.youngla.com/";
+
+export const supplementItems = [
   {
-    name: "Michelle D.",
-    rating: 5,
-    quote:
-      "Sara doesn't just give you a plan — she actually cares about your progress. Every check-in felt personal, not automated. I've worked with trainers before, but this was different.",
-    avatar: splash(100, 100, "portrait"),
+    video: "/videos/supplements/reel-1.mp4",
+    poster: splash(720, 1280, "protein supplement"),
+    alt: "Sara's supplement reel — protein and recovery",
+    instagramUrl: "https://www.instagram.com/reels/DZn-BDkzDlS/",
   },
   {
-    name: "Rachel S.",
-    rating: 5,
-    quote:
-      "I signed up skeptical. Three months later, I'm deadlifting more than my husband and feel incredible in my skin. Sara's approach is real, not restrictive.",
-    avatar: splash(100, 100, "woman"),
+    video: "/videos/supplements/reel-2.mp4",
+    poster: splash(720, 1280, "vitamins"),
+    alt: "Sara's supplement reel — daily vitamins",
+    instagramUrl: "https://www.instagram.com/reels/DbB4EsuTlUv/",
   },
   {
-    name: "Priya N.",
-    rating: 5,
-    quote:
-      "The Transform program was worth every penny. Having someone adjust my plan when life got crazy — travel, sick kids, stress — kept me from quitting like I always did.",
-    avatar: splash(100, 100, "smile"),
-  },
-  {
-    name: "Lauren B.",
-    rating: 5,
-    quote:
-      "Sara's energy is contagious. Her Instagram drew me in, but her coaching kept me. I'm stronger, leaner, and actually enjoy working out for the first time.",
-    avatar: splash(100, 100, "face"),
+    video: "/videos/supplements/reel-3.mp4",
+    poster: splash(720, 1280, "supplements"),
+    alt: "Sara's supplement reel — fitness supplements",
+    instagramUrl: "https://www.instagram.com/reels/DaWIpVxTaU8/",
   },
 ] as const;
 
-export const faqs = [
-  {
-    question: "Do I need a gym?",
-    answer:
-      "No. Most of my clients train at home with dumbbells and resistance bands. I'll build your program around whatever equipment you have access to — home, gym, or both.",
-  },
-  {
-    question: "What if I'm a complete beginner?",
-    answer:
-      "You're in the right place. Programs are scaled to your level from day one. We focus on form, building confidence, and creating habits that stick before pushing intensity.",
-  },
-  {
-    question: "How fast will I see results?",
-    answer:
-      "Most clients feel stronger and more energized within 2 weeks. Visible physical changes typically show in 6–8 weeks with consistent training and nutrition adherence.",
-  },
-  {
-    question: "What equipment do I need?",
-    answer:
-      "At minimum, a set of dumbbells or resistance bands. A full gym is a bonus, not a requirement. I'll design around what you have and suggest affordable upgrades if needed.",
-  },
-  {
-    question: "Is this only for weight loss?",
-    answer:
-      "Not at all. We focus on building strength, improving energy, and developing confidence. Fat loss often happens as a natural result, but it's never the only goal.",
-  },
-  {
-    question: "How do online check-ins work?",
-    answer:
-      "You'll submit progress updates, photos, and notes through the coaching app. I review everything weekly and adjust your program based on how you're progressing and feeling.",
-  },
-] as const;
+export const supplementCtaUrl =
+  "https://ehplabs.com.au/?utm_campaign=kol&platform=grin&link_id=2062501&token=8uMA6JmUUQdfhroSeHyMtC7DtvK6R03b&contact_id=a38c9a33-fcaa-4332-8909-875e9569ccf8&attribution_window=30";
 
 export const instagramTiles = [
   splash(400, 400, "fitness"),
@@ -196,18 +218,47 @@ export const instagramTiles = [
 ] as const;
 
 export const images = {
-  hero: splash(1200, 900, "gym"),
+  hero: "/images/hero.png",
   about: splash(800, 1000, "female fitness trainer"),
-  freeWorkout: splash(800, 1000, "workout"),
   og: "/opengraph-image",
 } as const;
 
-export const videoEmbedUrl = "https://www.youtube.com/embed/L_LUpnjgP9o";
-
-export const scarcityMessage = "Only 5 coaching spots left this month";
+export const heroContent = {
+  heading: {
+    line1: "Strong Looks Good",
+    accent: "On You.",
+    line2: "Let's Build It",
+    line3: "Your Way.",
+  },
+  subtext:
+    "I'm Sara - online coach for individuals who are done with cookie-cutter plans. Real programming. Real accountability. Real life included.",
+  primaryCta: { label: "View My Programs", href: "/#programs" },
+  secondaryCta: { label: "Get a Free Workout" },
+  socialProof: "50+ clients transformed · 4.9★ rated",
+} as const;
 
 export const brandTagline =
   "Strong looks good on you. Let's build it your way.";
 
 export const footerTagline =
   "Built for real women. Real results. No shortcuts.";
+
+export const shopPromoCode = "SEZZY";
+export const shopDiscount = "20% OFF EVERYTHING";
+
+export const scarcityMessage = "Only 5 coaching spots left this month";
+
+export const sectionCopy = {
+  programs: {
+    subheading:
+      "Expert-designed workout programs for every body and fitness level.",
+  },
+  pricing: {
+    subheading:
+      "Hurry up! Only few spots left.",
+  },
+  finalCta: {
+    subheading:
+      "Spots fill fast. If you're serious about building strength, confidence, and a body that matches your ambition — let's talk.",
+  },
+} as const;

@@ -23,7 +23,7 @@ export default function PrivacyPage() {
       </header>
 
       <main className="mx-auto max-w-3xl px-4 py-16 md:px-8">
-        <h1 className="font-display text-4xl font-bold uppercase text-charcoal">
+        <h1 className="section-heading text-charcoal">
           Privacy Policy
         </h1>
         <p className="mt-4 text-sm text-charcoal/60">
@@ -48,10 +48,10 @@ export default function PrivacyPage() {
               How We Use Your Information
             </h2>
             <p className="mt-3 leading-relaxed">
-              We use your information to deliver requested content (such as
-              free workouts), communicate about coaching services, send
-              newsletters you&apos;ve opted into, and improve our services. We
-              do not sell your personal data to third parties.
+              We use your information to deliver requested content (such as free
+              workouts), communicate about coaching services, send newsletters
+              you&apos;ve opted into, and improve our services. We do not sell
+              your personal data to third parties.
             </p>
           </section>
 

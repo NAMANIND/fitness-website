@@ -6,22 +6,12 @@ import { createPortal } from "react-dom";
 import ContactButton from "@/components/ContactButton";
 import { navLinks } from "@/data/siteData";
 
-const CHARCOAL = "#1A1A1A";
-
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
@@ -31,14 +21,11 @@ export default function Navbar() {
     };
   }, [menuOpen]);
 
-  const showSolidHeader = scrolled || menuOpen;
-
   const mobileMenu =
     mounted && menuOpen
       ? createPortal(
           <div
-            className="fixed inset-0 z-[90] lg:hidden"
-            style={{ backgroundColor: CHARCOAL }}
+            className="fixed inset-0 z-[90] bg-black lg:hidden"
             role="dialog"
             aria-modal="true"
             aria-label="Mobile navigation menu"
@@ -61,7 +48,7 @@ export default function Navbar() {
                     className="btn-primary w-full"
                     onClick={() => setMenuOpen(false)}
                   >
-                    Work With Me
+                    Get Started
                   </ContactButton>
                 </li>
               </ul>
@@ -73,23 +60,14 @@ export default function Navbar() {
 
   return (
     <>
-      <header
-        className={`fixed inset-x-0 top-0 z-[100] transition-shadow duration-300 ${
-          showSolidHeader ? "shadow-lg" : ""
-        }`}
-        style={{
-          backgroundColor: showSolidHeader ? CHARCOAL : "transparent",
-        }}
-      >
+      <header className="sticky top-0 z-[100] bg-black">
         <nav
           aria-label="Primary"
           className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8"
         >
           <Link
-            href="#home"
-            className={`font-display text-2xl font-bold uppercase tracking-wide transition-colors ${
-              showSolidHeader ? "text-white" : "text-charcoal"
-            }`}
+            href="/#home"
+            className="font-display text-2xl font-bold uppercase tracking-wide text-white"
             onClick={() => setMenuOpen(false)}
           >
             Sara<span className="text-coral">.</span>
@@ -100,9 +78,7 @@ export default function Navbar() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`text-sm font-medium transition-colors hover:text-coral ${
-                    showSolidHeader ? "text-white/90" : "text-charcoal/80"
-                  }`}
+                  className="text-sm font-medium text-white/90 transition-colors hover:text-coral"
                 >
                   {link.label}
                 </Link>
@@ -116,9 +92,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className={`relative z-[101] lg:hidden ${
-              showSolidHeader ? "text-white" : "text-charcoal"
-            }`}
+            className="relative z-[101] text-white lg:hidden"
             aria-expanded={menuOpen}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             onClick={() => setMenuOpen(!menuOpen)}

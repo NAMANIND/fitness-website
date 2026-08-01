@@ -1,4 +1,4 @@
-import { faqs, images, packages } from "@/data/siteData";
+import { images, packages } from "@/data/siteData";
 import { absoluteUrl, siteConfig } from "@/lib/seo";
 
 export default function JsonLd() {
@@ -38,20 +38,8 @@ export default function JsonLd() {
           "@type": "Offer",
           name: pkg.name,
           description: pkg.description,
-          price: pkg.price.replace(/[^\d]/g, "") || "97",
+          price: pkg.price.replace(/[^\d.]/g, "") || "10",
           priceCurrency: "USD",
-        })),
-      },
-      {
-        "@type": "FAQPage",
-        "@id": `${absoluteUrl("/")}#faq`,
-        mainEntity: faqs.map((faq) => ({
-          "@type": "Question",
-          name: faq.question,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: faq.answer,
-          },
         })),
       },
     ],

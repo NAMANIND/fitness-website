@@ -1,52 +1,85 @@
 @import "tailwindcss";
 
 :root {
+  --black: #000000;
+  --white: #ffffff;
+  --light-pink: #fff0f3;
+  --pale-beige: #fdf7f4;
   --charcoal: #1a1a1a;
   --warm-white: #f9f6f1;
   --coral: #ff4d6d;
-  --coral-hover: #e8435f;
+  --coral-hover: #ff4d6d;
   --rose-gold: #c9a882;
 }
 
 @theme inline {
+  --color-black: var(--black);
+  --color-white: var(--white);
+  --color-light-pink: var(--light-pink);
+  --color-pale-beige: var(--pale-beige);
   --color-charcoal: var(--charcoal);
   --color-warm-white: var(--warm-white);
   --color-coral: var(--coral);
   --color-coral-hover: var(--coral-hover);
   --color-rose-gold: var(--rose-gold);
-  --font-display: var(--font-display);
-  --font-body: var(--font-body);
+  --font-display: var(--font-inter);
+  --font-body: var(--font-inter);
+  --font-section: var(--font-barlow);
 }
 
 html {
   scroll-behavior: smooth;
+  background-color: var(--color-coral);
 }
 
 body {
-  background: var(--warm-white);
-  color: var(--charcoal);
+  background: var(--white);
+  color: var(--black);
   font-family: var(--font-body), system-ui, sans-serif;
 }
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center rounded-full bg-coral px-7 py-3.5 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:bg-coral-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral;
+    @apply inline-flex items-center justify-center rounded-full bg-coral px-7 py-3.5 text-sm font-semibold tracking-wide text-white transition duration-200 hover:bg-coral-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-coral;
+  }
+
+  .btn-primary-invert {
+    @apply inline-flex items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold tracking-wide text-coral transition duration-200 hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white;
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center rounded-full border-2 border-charcoal px-7 py-3.5 text-sm font-semibold text-charcoal transition duration-200 hover:bg-charcoal hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-charcoal;
+    @apply inline-flex items-center justify-center rounded-full border-2 border-black px-7 py-3.5 text-sm font-semibold text-black transition duration-200 hover:bg-black hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black;
   }
 
   .btn-ghost-light {
-    @apply inline-flex items-center justify-center rounded-full border-2 border-white/80 px-7 py-3.5 text-sm font-semibold text-white transition duration-200 hover:bg-white hover:text-charcoal focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white;
+    @apply inline-flex items-center justify-center rounded-full border-2 border-white px-7 py-3.5 text-sm font-semibold uppercase tracking-wide text-white transition duration-200 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white;
   }
 
-  .section-eyebrow {
-    @apply mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-coral;
+  .btn-white {
+    @apply inline-flex items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold uppercase tracking-wide text-black transition duration-200 hover:bg-white/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white;
+  }
+
+  .hero-heading {
+    @apply font-display text-4xl font-extrabold uppercase leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl;
   }
 
   .section-heading {
-    @apply font-display text-4xl font-bold uppercase leading-tight tracking-tight text-charcoal md:text-5xl lg:text-6xl;
+    @apply font-section text-3xl font-bold uppercase leading-tight tracking-tight md:text-4xl lg:text-5xl;
+  }
+  .section-heading-big {
+    @apply font-display text-5xl font-extrabold leading-tight tracking-wide md:text-6xl lg:text-7xl;
+  }
+
+  .section-subheading {
+    @apply mt-4 text-lg leading-relaxed text-black/70 md:text-xl;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+
+  .section-header {
+    @apply mx-auto mb-12 max-w-3xl text-center md:mb-16;
   }
 
   .reveal {
@@ -58,7 +91,18 @@ body {
   }
 
   .skip-link {
-    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-coral focus:px-4 focus:py-2 focus:text-white;
+    @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-coral focus:px-4 focus:py-2 focus:text-white;
+  }
+}
+
+@keyframes carousel-shift {
+  from {
+    opacity: 0.4;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
