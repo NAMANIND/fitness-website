@@ -159,9 +159,21 @@ export const credibilityItems = [
 ] as const;
 
 export const shopItems = [
-  { image: splash(400, 600, "fitness apparel"), alt: "Fitness leggings and sports top" },
-  { image: splash(400, 600, "gym wear"), alt: "Athletic wear set" },
-  { image: splash(400, 600, "workout clothes"), alt: "Workout outfit" },
+  {
+    video: "/videos/shops/reel-1.mp4",
+    poster: splash(720, 1280, "fitness apparel"),
+    alt: "Sara's shop reel — fitness apparel",
+  },
+  {
+    video: "/videos/shops/reel-2.mp4",
+    poster: splash(720, 1280, "gym wear"),
+    alt: "Sara's shop reel — athletic wear",
+  },
+  {
+    video: "/videos/shops/reel-3.mp4",
+    poster: splash(720, 1280, "workout clothes"),
+    alt: "Sara's shop reel — workout outfit",
+  },
 ] as const;
 
 export const shopCtaUrl = "https://www.youngla.com/";

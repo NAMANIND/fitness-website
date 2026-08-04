@@ -7,21 +7,22 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen"
+      className="relative mt-[72px] w-full"
       aria-labelledby="hero-heading"
     >
       <Image
         src={images.hero}
         alt="Female fitness model training in a gym"
-        fill
+        width={1428}
+        height={833}
         priority
-        className="object-cover"
+        className="h-auto w-full"
         sizes="100vw"
       />
       <div className="absolute inset-0 bg-black/5" />
 
-      <div className="relative z-10 flex min-h-screen items-center">
-        <div className="mx-auto w-full max-w-7xl px-4 py-16 md:px-6">
+      <div className="absolute inset-0 z-10 flex items-center">
+        <div className="mx-auto w-full max-w-7xl px-4 py-10 md:px-6 md:py-16">
           <div className="reveal max-w-2xl">
             <h1 id="hero-heading" className="hero-heading text-white">
               {heroContent.heading.line1}{" "}

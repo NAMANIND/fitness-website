@@ -1,4 +1,4 @@
-import Image from "next/image";
+import ReelVideo from "@/components/ReelVideo";
 import {
   shopCtaUrl,
   shopDiscount,
@@ -22,18 +22,9 @@ export default function Shop() {
         </div>
 
         <div className="grid gap-6 sm:grid-cols-3">
-          {shopItems.map((item, index) => (
-            <div
-              key={index}
-              className="reveal relative aspect-[3/4] overflow-hidden rounded-xl"
-            >
-              <Image
-                src={item.image}
-                alt={item.alt}
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, 33vw"
-              />
+          {shopItems.map((item) => (
+            <div key={item.video} className="reveal">
+              <ReelVideo src={item.video} poster={item.poster} alt={item.alt} />
             </div>
           ))}
         </div>
