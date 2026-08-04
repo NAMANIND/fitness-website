@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow_Condensed, Inter } from "next/font/google";
 import JsonLd from "@/components/JsonLd";
+import LenisProvider from "@/components/LenisProvider";
 import { absoluteUrl, siteConfig } from "@/lib/seo";
 import "./globals.css";
 
@@ -66,9 +67,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${barlowCondensed.variable}`}>
-      <body className="min-h-screen pb-20 font-body antialiased md:pb-0">
-        <JsonLd />
-        {children}
+      <body className="min-h-screen overflow-x-hidden pb-20 font-body antialiased md:pb-0">
+        <LenisProvider>
+          <JsonLd />
+          {children}
+        </LenisProvider>
       </body>
     </html>
   );

@@ -20,9 +20,9 @@ export default function Testimonials() {
           {clientResults.map((result) => (
             <article
               key={result.name}
-              className="reveal overflow-hidden rounded-xl"
+              className="reveal overflow-hidden rounded-3xl"
             >
-              <div className="grid grid-cols-2 gap-1">
+              <div className="grid grid-cols-2 gap-1 bg-black">
                 <div className="relative aspect-[3/4]">
                   <Image
                     src={result.beforeImage}
@@ -31,7 +31,7 @@ export default function Testimonials() {
                     className="object-cover"
                     sizes="200px"
                   />
-                  <span className="absolute left-2 top-2 rounded-full bg-black/80 px-2 py-0.5 text-xs font-bold uppercase text-white">
+                  <span className="absolute left-2 top-2 rounded-md bg-black/80 px-2 py-0.5 text-xs font-bold uppercase text-white">
                     Before
                   </span>
                 </div>
@@ -43,15 +43,20 @@ export default function Testimonials() {
                     className="object-cover"
                     sizes="200px"
                   />
-                  <span className="absolute left-2 top-2 rounded-full bg-coral px-2 py-0.5 text-xs font-bold uppercase text-white">
+                  <span className="absolute left-2 top-2 rounded-md bg-coral px-2 py-0.5 text-xs font-bold uppercase text-white">
                     After
                   </span>
                 </div>
               </div>
               <div className="bg-black p-6">
-                <h3 className="font-display text-lg font-bold uppercase text-white">
-                  {result.name}
-                </h3>
+                <div className="flex items-baseline justify-between gap-3">
+                  <h3 className="font-section text-lg font-bold uppercase text-white">
+                    {result.name}
+                  </h3>
+                  <span className="shrink-0 text-xs font-semibold uppercase tracking-wide text-rose-gold">
+                    {result.weeks}
+                  </span>
+                </div>
                 <blockquote className="mt-3 text-sm leading-relaxed text-white/70">
                   &ldquo;{result.quote}&rdquo;
                 </blockquote>

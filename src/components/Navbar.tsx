@@ -60,14 +60,14 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-[100] bg-black">
+      <header className="fixed w-full top-0 left-0 right-0 z-[100] bg-[#1A1A1A]">
         <nav
           aria-label="Primary"
           className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8"
         >
           <Link
             href="/#home"
-            className="font-display text-2xl font-bold uppercase tracking-wide text-white"
+            className="font-display text-xl font-bold uppercase tracking-wide text-white"
             onClick={() => setMenuOpen(false)}
           >
             Sara<span className="text-coral">.</span>

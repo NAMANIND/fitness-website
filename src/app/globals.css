@@ -30,12 +30,14 @@
 html {
   scroll-behavior: smooth;
   background-color: var(--color-coral);
+  overflow-x: hidden;
 }
 
 body {
   background: var(--white);
   color: var(--black);
   font-family: var(--font-body), system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
 @layer components {
@@ -52,7 +54,7 @@ body {
   }
 
   .btn-ghost-light {
-    @apply inline-flex items-center justify-center rounded-full border-2 border-white px-7 py-3.5 text-sm font-semibold uppercase tracking-wide text-white transition duration-200 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white;
+    @apply inline-flex items-center justify-center rounded-full border-2 border-white px-7 py-3.5 text-sm font-semibold tracking-wide text-white transition duration-200 hover:bg-white hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white;
   }
 
   .btn-white {
@@ -60,18 +62,18 @@ body {
   }
 
   .hero-heading {
-    @apply font-display text-4xl font-extrabold uppercase leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl;
+    @apply font-display text-4xl font-extrabold uppercase leading-[1.3] tracking-tight sm:text-5xl lg:text-6xl;
   }
 
   .section-heading {
-    @apply font-section text-3xl font-bold uppercase leading-tight tracking-tight md:text-4xl lg:text-5xl;
+    @apply font-section text-3xl font-bold uppercase leading-tight tracking-tight md:text-5xl lg:text-6xl;
   }
   .section-heading-big {
     @apply font-display text-5xl font-extrabold leading-tight tracking-wide md:text-6xl lg:text-7xl;
   }
 
   .section-subheading {
-    @apply mt-4 text-lg leading-relaxed text-black/70 md:text-xl;
+    @apply mt-2 text-xl leading-relaxed text-black/70 md:text-2xl;
   }
 
   .section-padding {
@@ -79,7 +81,7 @@ body {
   }
 
   .section-header {
-    @apply mx-auto mb-12 max-w-3xl text-center md:mb-16;
+    @apply mx-auto mb-12 max-w-7xl text-center md:mb-16;
   }
 
   .reveal {
@@ -104,6 +106,79 @@ body {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.container-et {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  width: 100% !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container-heading {
+  font-size: clamp(0.8rem, 4.5vw, 1.8rem);
+  font-weight: normal;
+  line-height: 130%;
+  text-transform: uppercase;
+}
+
+.container-head {
+  font-size: clamp(1.5rem, 4.5vw, 4.25rem);
+  margin-bottom: clamp(2rem, 6vw, 5.625rem);
+}
+
+.container-hero {
+  font-size: clamp(0.8rem, 4.5vw, 1.8rem);
+}
+
+.pt-et {
+  padding-top: 3rem;
+}
+
+.pb-et {
+  padding-bottom: 3rem;
+}
+
+.py-et {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+@media (max-width: 720px) {
+  .container-et {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .pt-et {
+    padding-top: 1.5rem;
+  }
+
+  .pb-et {
+    padding-bottom: 1.5rem;
+  }
+
+  .py-et {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
 
 .sr-only {

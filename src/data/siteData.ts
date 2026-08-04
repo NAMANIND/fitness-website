@@ -99,47 +99,26 @@ export const exercisePrograms = [
 
 export const packages = [
   {
-    name: "Essentials",
-    price: "$10/mo",
-    description: "Everything you need to start building strength on your own schedule.",
-    features: [
-      "Custom training program",
-      "Exercise demo library",
-      "Weekly check-ins via app",
-      "Nutrition basics guide",
-      "Community access",
-    ],
-    cta: "Get Started",
+    name: "Annual",
+    price: "$10/mo.",
+    billing: "$119.99 billed annually",
+    description: "Best value — billed once per year.",
     featured: true,
     badge: "50% OFF",
   },
   {
-    name: "Transform",
-    price: "$16.66/mo",
-    description: "More support and accountability for women ready to commit.",
-    features: [
-      "Fully personalized programming",
-      "Bi-weekly coaching calls",
-      "Macro coaching guidance",
-      "24/7 DM support",
-      "Progress photo reviews",
-    ],
-    cta: "Get Started",
+    name: "Quarterly",
+    price: "$16.66/mo.",
+    billing: "$49.99 billed quarterly",
+    description: "Billed every three months.",
     featured: false,
     badge: null,
   },
   {
-    name: "Elite 1:1",
-    price: "$19.99/mo",
-    description: "Maximum accountability for serious transformation.",
-    features: [
-      "Daily accountability check-ins",
-      "Weekly 1:1 video calls",
-      "Custom meal guidance",
-      "Priority support",
-      "Competition prep optional",
-    ],
-    cta: "Get Started",
+    name: "Monthly",
+    price: "$19.99/mo.",
+    billing: "$19.99 billed monthly",
+    description: "Flexible month-to-month billing.",
     featured: false,
     badge: null,
   },
@@ -148,6 +127,7 @@ export const packages = [
 export const clientResults = [
   {
     name: "Jessica M.",
+    weeks: "12 Weeks",
     quote:
       "I finally stopped yo-yo dieting. Sara taught me to lift heavy, eat enough, and trust the process. Down 18 lbs and stronger than ever.",
     beforeImage: splash(400, 500, "yoga"),
@@ -155,6 +135,7 @@ export const clientResults = [
   },
   {
     name: "Amanda R.",
+    weeks: "16 Weeks",
     quote:
       "As a busy mom of two, I thought fitness wasn't possible. Sara built workouts I could do in 30 minutes. I have energy again.",
     beforeImage: splash(400, 500, "running"),
@@ -162,6 +143,7 @@ export const clientResults = [
   },
   {
     name: "Taylor K.",
+    weeks: "10 Weeks",
     quote:
       "I was intimidated by the gym. Sara's coaching gave me confidence and proper form. I actually look forward to training now.",
     beforeImage: splash(400, 500, "stretch"),
@@ -227,8 +209,8 @@ export const heroContent = {
   heading: {
     line1: "Strong Looks Good",
     accent: "On You.",
-    line2: "Let's Build It",
-    line3: "Your Way.",
+    line2: "Let's Build It Your",
+    line3: "Way.",
   },
   subtext:
     "I'm Sara - online coach for individuals who are done with cookie-cutter plans. Real programming. Real accountability. Real life included.",

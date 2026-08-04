@@ -39,16 +39,16 @@ export default function Shop() {
         </div>
 
         <div className="reveal mt-12 text-center">
-          <p className="text-base text-white md:text-lg">
+          <p className="font-section text-4xl font-bold uppercase tracking-tight text-white md:text-6xl">
             Use code{" "}
-            <span className="font-bold text-coral">{shopPromoCode}</span> for{" "}
-            <span className="font-bold">{shopDiscount}</span>
+            <span className="text-coral">{shopPromoCode}</span> for{" "}
+            {shopDiscount}
           </p>
           <a
             href={shopCtaUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary mt-8 inline-flex px-10 py-4"
+            className="btn-primary mt-8 inline-flex px-20 py-5 text-2xl font-bold uppercase tracking-tight"
           >
             Shop Now
           </a>

@@ -24,7 +24,9 @@ export default function Home() {
       <main id="main-content">
         <Hero />
         <CredibilityBar />
-        <Programs />
+        <div className="relative w-screen overflow-hidden">
+          <Programs />
+        </div>
         <About />
         <Testimonials />
         <Packages />

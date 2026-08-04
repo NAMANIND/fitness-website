@@ -17,11 +17,11 @@ export default function Packages() {
           <p className="section-subheading">{sectionCopy.pricing.subheading}</p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-3 sm:gap-5">
           {packages.map((pkg) => (
             <article
               key={pkg.name}
-              className={`reveal relative flex flex-col rounded-2xl p-8 ${
+              className={`reveal relative flex min-h-62 flex-col items-center justify-center rounded-3xl px-6 py-10 text-center ${
                 pkg.featured
                   ? "bg-black text-white"
                   : "border border-black/15 bg-white text-black"
@@ -32,45 +32,22 @@ export default function Packages() {
                   {pkg.badge}
                 </span>
               )}
-              <p className="font-display text-3xl font-bold">{pkg.price}</p>
-              <h3 className="mt-2 font-display text-xl font-bold uppercase">
-                {pkg.name}
-              </h3>
-              <p
-                className={`mt-3 text-sm ${pkg.featured ? "text-white/70" : "text-black/60"}`}
-              >
-                {pkg.description}
+              <p className=" text-4xl font-extrabold md:text-5xl leading-none">
+                {pkg.price}
               </p>
-              <ul className="mt-8 flex-1 space-y-3">
-                {pkg.features.map((feature) => (
-                  <li
-                    key={feature}
-                    className={`flex items-start gap-3 text-sm ${pkg.featured ? "text-white/85" : "text-black/80"}`}
-                  >
-                    <svg
-                      className="mt-0.5 h-5 w-5 shrink-0 text-coral"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <ContactButton
-                className={`mt-8 w-full ${
-                  pkg.featured ? "btn-primary" : "btn-ghost"
-                }`}
+              <p
+                className={`mt-2 text-xl ${pkg.featured ? "text-white/80" : "text-black/70"}`}
               >
-                {pkg.cta}
-              </ContactButton>
+                {pkg.billing}
+              </p>
             </article>
           ))}
+        </div>
+
+        <div className="reveal mt-10 flex justify-center">
+          <ContactButton className="btn-primary min-w-[min(100%,28rem)] px-20 py-5 text-xl font-bold tracking-wide md:px-28 md:py-6 md:text-2xl">
+            Get Started
+          </ContactButton>
         </div>
       </div>
     </section>
