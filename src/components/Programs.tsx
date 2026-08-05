@@ -10,10 +10,10 @@ function ProgramsCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full pt-4">
       <div
         ref={carouselRef}
-        className="no-scrollbar flex snap-x snap-mandatory scroll-smooth overflow-x-auto"
+        className="no-scrollbar flex snap-x snap-mandatory scroll-smooth overflow-x-auto overflow-y-visible"
         onScroll={(event) => {
           const target = event.currentTarget;
           const slideWidth = target.clientWidth;
@@ -59,7 +59,7 @@ export default function Programs() {
       aria-labelledby="programs-heading"
       ref={sectionRef}
     >
-      <div className="mx-auto max-h-[99vh] w-full overflow-hidden">
+      <div className="mx-auto w-full md:max-h-[99vh] md:overflow-hidden">
         <div className="text-center">
           <h2
             id="programs-heading"

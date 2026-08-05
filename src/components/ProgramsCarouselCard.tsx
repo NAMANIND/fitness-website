@@ -16,7 +16,7 @@ export function ProgramsCarouselCard({
   return (
     <div className={`relative ${className}`}>
       {program.isNew && (
-        <span className="absolute left-5 top-0 z-20 -translate-y-1/2 rounded-full bg-coral px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white md:left-6">
+        <span className="absolute left-5 top-3 z-20 rounded-full bg-coral px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-white md:left-6 md:top-0 md:-translate-y-1/2">
           New
         </span>
       )}
