@@ -45,53 +45,35 @@ export const exercisePrograms = [
     title: "LVLUP 2026",
     description:
       "A 6 week, high-energy program designed to push you further, build more strength and take your fitness to the next level.",
-    image: splash(400, 600, "gym fitness woman"),
+    image: "/images/program-1.png",
     isNew: true,
     theme: "night",
     cta: "Start Now",
   },
   {
-    title: "HIIT 20M",
+    title: "Peak Body Max",
     description:
-      "Short, intense sessions that torch calories and build endurance — perfect when you're tight on time.",
-    image: splash(400, 600, "hiit workout"),
+      "Build your strongest body ever and achieve peak definition with new moves for maximum full-body sculpting.",
+    image: "/images/program-2.png",
     isNew: false,
     theme: "day",
     cta: "Start Now",
   },
   {
-    title: "Strength Builder",
+    title: "Lower Body Blast",
     description:
-      "Progressive lifting plans focused on building real strength with proper form and smart programming.",
-    image: splash(400, 600, "strength training"),
+      "Get that peach you've always wanted. In just 6 weeks, we’re going to sculpt, shape, firm, tone, and grow that booty. Boom!",
+    image: "/images/program-3.png",
     isNew: false,
     theme: "night",
     cta: "Start Now",
   },
   {
-    title: "Core & Burn",
+    title: "Upper Body Blast",
     description:
-      "Targeted core work and full-body burn sessions for beginners ready to build a solid foundation.",
-    image: splash(400, 600, "core workout"),
+      "Want sculpted arms, sleek shoulders and a strong back? Get it all in 6 weeks with Upper Body Blast.",
+    image: "/images/program-4.png",
     isNew: false,
-    theme: "day",
-    cta: "Start Now",
-  },
-  {
-    title: "Full Body Flow",
-    description:
-      "Balanced training that hits every muscle group — strength, mobility, and conditioning in one.",
-    image: splash(400, 600, "full body workout"),
-    isNew: false,
-    theme: "night",
-    cta: "Start Now",
-  },
-  {
-    title: "Glute Lab",
-    description:
-      "Glute-focused programming to build shape, strength, and power without neglecting the rest of your training.",
-    image: splash(400, 600, "leg workout"),
-    isNew: true,
     theme: "day",
     cta: "Start Now",
   },
@@ -130,24 +112,24 @@ export const clientResults = [
     weeks: "12 Weeks",
     quote:
       "I finally stopped yo-yo dieting. Sara taught me to lift heavy, eat enough, and trust the process. Down 18 lbs and stronger than ever.",
-    beforeImage: splash(400, 500, "yoga"),
-    afterImage: splash(400, 500, "fitness"),
+    beforeImage: "/images/before-1.png",
+    afterImage: "/images/after-1.png",
   },
   {
     name: "Amanda R.",
     weeks: "16 Weeks",
     quote:
       "As a busy mom of two, I thought fitness wasn't possible. Sara built workouts I could do in 30 minutes. I have energy again.",
-    beforeImage: splash(400, 500, "running"),
-    afterImage: splash(400, 500, "gym"),
+    beforeImage: "/images/before-2.png",
+    afterImage: "/images/after-2.png",
   },
   {
     name: "Taylor K.",
     weeks: "10 Weeks",
     quote:
       "I was intimidated by the gym. Sara's coaching gave me confidence and proper form. I actually look forward to training now.",
-    beforeImage: splash(400, 500, "stretch"),
-    afterImage: splash(400, 500, "workout"),
+    beforeImage: "/images/before-3.png",
+    afterImage: "/images/after-3.png",
   },
 ] as const;
 
@@ -161,17 +143,17 @@ export const credibilityItems = [
 export const shopItems = [
   {
     video: "/videos/shops/reel-1.mp4",
-    poster: splash(720, 1280, "fitness apparel"),
+    poster: "/images/shop-1.png",
     alt: "Sara's shop reel — fitness apparel",
   },
   {
     video: "/videos/shops/reel-2.mp4",
-    poster: splash(720, 1280, "gym wear"),
+    poster: "/images/shop-2.png",
     alt: "Sara's shop reel — athletic wear",
   },
   {
     video: "/videos/shops/reel-3.mp4",
-    poster: splash(720, 1280, "workout clothes"),
+    poster: "/images/shop-3.png",
     alt: "Sara's shop reel — workout outfit",
   },
 ] as const;
@@ -213,7 +195,7 @@ export const instagramTiles = [
 
 export const images = {
   hero: "/images/hero.png",
-  about: splash(800, 1000, "female fitness trainer"),
+  about: "/images/about.png",
   og: "/opengraph-image",
 } as const;
 

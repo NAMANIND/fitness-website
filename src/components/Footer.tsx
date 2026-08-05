@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { FormEvent, useState } from "react";
 import ContactButton from "@/components/ContactButton";
 import { InstagramIcon } from "@/components/SocialIcons";
 import {
@@ -12,17 +11,10 @@ import {
 import { siteConfig } from "@/lib/seo";
 
 export default function Footer() {
-  const [subscribed, setSubscribed] = useState(false);
-
-  function handleNewsletter(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setSubscribed(true);
-  }
-
   return (
     <footer id="contact" className="bg-black py-16 md:py-20">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
           <div>
             <Link
               href="/#home"
@@ -70,38 +62,6 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-bold uppercase tracking-wide text-white">
-              Subscribe to our newsletter
-            </h3>
-            {subscribed ? (
-              <p className="mt-4 text-sm font-semibold text-coral">
-                You&apos;re in! Check your inbox soon.
-              </p>
-            ) : (
-              <form onSubmit={handleNewsletter} className="mt-4">
-                <label htmlFor="footer-email" className="sr-only">
-                  Email address
-                </label>
-                <div className="flex overflow-hidden rounded-full border border-white/20 bg-white/10">
-                  <input
-                    id="footer-email"
-                    type="email"
-                    required
-                    placeholder="your@email.com"
-                    className="min-w-0 flex-1 bg-transparent px-4 py-3 text-sm text-white placeholder:text-white/40 focus:outline-none"
-                  />
-                  <button
-                    type="submit"
-                    className="rounded-full bg-coral px-5 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:bg-coral-hover"
-                  >
-                    Submit
-                  </button>
-                </div>
-              </form>
-            )}
           </div>
         </div>
 

@@ -3,14 +3,54 @@
 import { useRef, useState } from "react";
 import { OnScrollSlider } from "@/components/OnScrollSlider";
 import { ProgramsCarouselCard } from "@/components/ProgramsCarouselCard";
-import { useScreen } from "@/hooks/useScreen";
 import { exercisePrograms, sectionCopy } from "@/data/siteData";
 
-export default function Programs() {
-  const { isMobile } = useScreen();
-  const sectionRef = useRef<HTMLDivElement>(null);
+function ProgramsCarousel() {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  return (
+    <div className="relative w-full">
+      <div
+        ref={carouselRef}
+        className="no-scrollbar flex snap-x snap-mandatory scroll-smooth overflow-x-auto"
+        onScroll={(event) => {
+          const target = event.currentTarget;
+          const slideWidth = target.clientWidth;
+          const next = Math.round(target.scrollLeft / slideWidth);
+          if (next !== activeIndex) setActiveIndex(next);
+        }}
+      >
+        {exercisePrograms.map((program) => (
+          <div
+            key={program.title}
+            className="w-full shrink-0 snap-center px-[var(--page-gutter)]"
+          >
+            <ProgramsCarouselCard
+              program={program}
+              className="mx-auto w-full max-w-sm"
+              imageClassName="h-[min(58vh,420px)]"
+            />
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-6 flex items-center justify-center px-[var(--page-gutter)]">
+        <div className="relative h-0.5 w-full max-w-sm overflow-hidden rounded-full bg-gray-200">
+          <div
+            className="absolute top-0 left-0 h-full rounded-full bg-gray-900 transition-all duration-300 ease-out"
+            style={{
+              width: `${((activeIndex + 1) / exercisePrograms.length) * 100}%`,
+            }}
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function Programs() {
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   return (
     <section
@@ -34,44 +74,10 @@ export default function Programs() {
         </div>
 
         <div className="relative pt-12 pb-20">
-          {isMobile ? (
-            <div className="relative w-full">
-              <div
-                ref={carouselRef}
-                className="no-scrollbar flex snap-x snap-mandatory scroll-smooth gap-1 overflow-x-auto px-4"
-                onScroll={(event) => {
-                  const target = event.currentTarget;
-                  const next = Math.round(
-                    target.scrollLeft / target.clientWidth,
-                  );
-                  if (next !== activeIndex) setActiveIndex(next);
-                }}
-              >
-                {exercisePrograms.map((program) => (
-                  <div key={program.title} className="shrink-0">
-                    <div className="px-1">
-                      <ProgramsCarouselCard
-                        program={program}
-                        className="mx-auto w-80 lg:w-96"
-                        imageClassName="h-[350px] lg:h-[450px]"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-6 flex items-center justify-center">
-                <div className="relative h-0.5 w-[80%] overflow-hidden rounded-full bg-gray-200">
-                  <div
-                    className="absolute top-0 left-0 h-full rounded-full bg-gray-900 transition-all duration-300 ease-out"
-                    style={{
-                      width: `${((activeIndex + 1) / exercisePrograms.length) * 100}%`,
-                    }}
-                  />
-                </div>
-              </div>
-            </div>
-          ) : (
+          <div className="md:hidden">
+            <ProgramsCarousel />
+          </div>
+          <div className="hidden md:block">
             <OnScrollSlider
               items={[...exercisePrograms]}
               className="h-full w-full"
@@ -79,7 +85,7 @@ export default function Programs() {
               scrubValue={1}
               ease="none"
             />
-          )}
+          </div>
         </div>
       </div>
     </section>

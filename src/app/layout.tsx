@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Barlow_Condensed, Inter } from "next/font/google";
 import JsonLd from "@/components/JsonLd";
 import LenisProvider from "@/components/LenisProvider";
@@ -60,6 +60,12 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -67,7 +73,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${barlowCondensed.variable}`}>
-      <body className="min-h-screen overflow-x-hidden pb-20 font-body antialiased md:pb-0">
+      <body className="min-h-screen overflow-x-hidden font-body antialiased">
         <LenisProvider>
           <JsonLd />
           {children}

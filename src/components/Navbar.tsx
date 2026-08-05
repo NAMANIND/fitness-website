@@ -9,9 +9,18 @@ import { navLinks } from "@/data/siteData";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 32);
+
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
@@ -20,6 +29,8 @@ export default function Navbar() {
       document.body.style.overflow = "";
     };
   }, [menuOpen]);
+
+  const solid = scrolled || menuOpen;
 
   const mobileMenu =
     mounted && menuOpen
@@ -30,7 +41,7 @@ export default function Navbar() {
             aria-modal="true"
             aria-label="Mobile navigation menu"
           >
-            <div className="flex h-full flex-col overflow-y-auto px-6 pb-8 pt-[88px]">
+            <div className="flex h-full flex-col overflow-y-auto px-6 pb-8 pt-[calc(var(--nav-height)+env(safe-area-inset-top,0px))]">
               <ul className="flex flex-col gap-1">
                 {navLinks.map((link) => (
                   <li key={link.href}>
@@ -60,10 +71,16 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="fixed w-full top-0 left-0 right-0 z-[100] bg-[#1A1A1A]">
+      <header
+        className={`fixed inset-x-0 top-0 z-[100] pt-[env(safe-area-inset-top,0px)] transition-[background-color,box-shadow,backdrop-filter] duration-300 ${
+          solid
+            ? "bg-charcoal/95 shadow-sm backdrop-blur-md"
+            : "bg-transparent"
+        }`}
+      >
         <nav
           aria-label="Primary"
-          className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8"
+          className="mx-auto flex h-[var(--nav-height)] max-w-7xl items-center justify-between px-[var(--page-gutter)]"
         >
           <Link
             href="/#home"

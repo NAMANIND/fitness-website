@@ -28,6 +28,12 @@ export function useContactDialog() {
   return context;
 }
 
+const fieldClass =
+  "w-full rounded-2xl border border-charcoal/10 bg-white px-4 py-3.5 text-base text-charcoal placeholder:text-charcoal/35 transition focus:border-coral focus:outline-none focus:ring-2 focus:ring-coral/15";
+
+const labelClass =
+  "mb-2 block text-xs font-bold uppercase tracking-wider text-charcoal/55";
+
 export function ContactDialogProvider({
   children,
 }: {
@@ -79,13 +85,13 @@ export function ContactDialogProvider({
 
       {isOpen && (
         <div
-          className="fixed inset-0 z-[100] flex items-end justify-center p-4 sm:items-center"
+          className="fixed inset-0 z-[100] flex items-end justify-center sm:items-center sm:p-4"
           role="presentation"
         >
           <button
             type="button"
             aria-label="Close contact form"
-            className="absolute inset-0 bg-charcoal/70 backdrop-blur-sm"
+            className="absolute inset-0 bg-charcoal/75 backdrop-blur-sm"
             onClick={closeContact}
           />
 
@@ -94,23 +100,25 @@ export function ContactDialogProvider({
             role="dialog"
             aria-modal="true"
             aria-labelledby="contact-dialog-title"
-            className="relative z-10 max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-3xl bg-warm-white shadow-2xl"
+            className="relative z-10 flex max-h-[92dvh] w-full max-w-xl flex-col overflow-hidden rounded-t-3xl bg-white shadow-2xl sm:max-h-[90vh] sm:rounded-3xl"
           >
-            <div className="sticky top-0 flex items-center justify-between border-b border-charcoal/10 bg-warm-white px-6 py-5">
+            <div className="flex shrink-0 items-start justify-between border-b border-charcoal/8 px-5 py-5 sm:px-6">
               <div>
-                <p className="section-eyebrow mb-1">Get in Touch</p>
+                <p className="text-xs font-bold uppercase tracking-[0.2em] text-coral">
+                  Work with Sara
+                </p>
                 <h2
                   id="contact-dialog-title"
-                  className="font-display text-2xl font-bold uppercase text-charcoal"
+                  className="mt-1 font-display text-2xl font-extrabold uppercase leading-tight text-charcoal sm:text-3xl"
                 >
-                  Contact Me
+                  Let&apos;s Talk
                 </h2>
               </div>
               <button
                 type="button"
                 onClick={closeContact}
                 aria-label="Close dialog"
-                className="rounded-full p-2 text-charcoal/60 transition hover:bg-charcoal/5 hover:text-charcoal"
+                className="rounded-full p-2.5 text-charcoal/50 transition hover:bg-charcoal/5 hover:text-charcoal"
               >
                 <svg
                   className="h-5 w-5"
@@ -128,9 +136,9 @@ export function ContactDialogProvider({
               </button>
             </div>
 
-            <div className="px-6 py-6">
+            <div className="min-h-0 flex-1 overflow-y-auto px-5 py-5 sm:px-6 sm:py-6">
               {submitted ? (
-                <div className="rounded-2xl border border-coral/20 bg-coral/5 p-6 text-center">
+                <div className="rounded-2xl border border-coral/20 bg-coral/5 p-8 text-center">
                   <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-coral/10">
                     <svg
                       className="h-7 w-7 text-coral"
@@ -147,88 +155,85 @@ export function ContactDialogProvider({
                     </svg>
                   </div>
                   <p className="font-display text-xl font-bold uppercase text-charcoal">
-                    Message Sent!
+                    You&apos;re on the list
                   </p>
-                  <p className="mt-2 text-sm text-charcoal/70">
-                    Thanks for reaching out. Sara will get back to you within
-                    24 hours.
+                  <p className="mt-2 text-sm leading-relaxed text-charcoal/70">
+                    Sara will reach out within 24 hours to talk goals and find
+                    the right fit.
                   </p>
                   <button
                     type="button"
                     onClick={closeContact}
-                    className="btn-primary mt-6"
+                    className="btn-primary mt-6 w-full sm:w-auto"
                   >
                     Close
                   </button>
                 </div>
               ) : (
                 <>
-                  <p className="mb-6 text-sm leading-relaxed text-charcoal/70">
-                    Tell me a bit about your goals and I&apos;ll reach out to
-                    discuss the best program for you.
+                  <p className="mb-6 text-sm leading-relaxed text-charcoal/65 sm:text-base">
+                    Share a few details and Sara will follow up with next steps.
                   </p>
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                      <label
-                        htmlFor="contact-name"
-                        className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-charcoal/60"
-                      >
-                        Full Name
-                      </label>
-                      <input
-                        id="contact-name"
-                        name="name"
-                        type="text"
-                        required
-                        placeholder="Your name"
-                        className="w-full rounded-xl border border-charcoal/15 bg-white px-4 py-3 text-charcoal placeholder:text-charcoal/40 focus:border-coral focus:outline-none focus:ring-2 focus:ring-coral/20"
-                      />
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid gap-5 sm:grid-cols-2">
+                      <div>
+                        <label htmlFor="contact-name" className={labelClass}>
+                          Full Name
+                        </label>
+                        <input
+                          id="contact-name"
+                          name="name"
+                          type="text"
+                          required
+                          autoComplete="name"
+                          placeholder="Jessica M."
+                          className={fieldClass}
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="contact-email" className={labelClass}>
+                          Email
+                        </label>
+                        <input
+                          id="contact-email"
+                          name="email"
+                          type="email"
+                          required
+                          autoComplete="email"
+                          placeholder="you@email.com"
+                          className={fieldClass}
+                        />
+                      </div>
                     </div>
+
                     <div>
-                      <label
-                        htmlFor="contact-email"
-                        className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-charcoal/60"
-                      >
-                        Email
-                      </label>
-                      <input
-                        id="contact-email"
-                        name="email"
-                        type="email"
-                        required
-                        placeholder="your@email.com"
-                        className="w-full rounded-xl border border-charcoal/15 bg-white px-4 py-3 text-charcoal placeholder:text-charcoal/40 focus:border-coral focus:outline-none focus:ring-2 focus:ring-coral/20"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="contact-phone"
-                        className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-charcoal/60"
-                      >
-                        Phone <span className="normal-case text-charcoal/40">(optional)</span>
+                      <label htmlFor="contact-phone" className={labelClass}>
+                        Phone{" "}
+                        <span className="font-medium normal-case text-charcoal/35">
+                          (optional)
+                        </span>
                       </label>
                       <input
                         id="contact-phone"
                         name="phone"
                         type="tel"
-                        placeholder="(555) 000-0000"
-                        className="w-full rounded-xl border border-charcoal/15 bg-white px-4 py-3 text-charcoal placeholder:text-charcoal/40 focus:border-coral focus:outline-none focus:ring-2 focus:ring-coral/20"
+                        autoComplete="tel"
+                        placeholder="Your phone number"
+                        className={fieldClass}
                       />
                     </div>
+
                     <div>
-                      <label
-                        htmlFor="contact-program"
-                        className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-charcoal/60"
-                      >
+                      <label htmlFor="contact-program" className={labelClass}>
                         Interested In
                       </label>
                       <select
                         id="contact-program"
                         name="program"
                         required
-                        className="w-full rounded-xl border border-charcoal/15 bg-white px-4 py-3 text-charcoal focus:border-coral focus:outline-none focus:ring-2 focus:ring-coral/20"
+                        className={fieldClass}
                       >
-                        <option value="">Select a program</option>
+                        <option value="">Choose a plan</option>
                         {packages.map((pkg) => (
                           <option key={pkg.name} value={pkg.name}>
                             {pkg.name} — {pkg.price}
@@ -237,11 +242,9 @@ export function ContactDialogProvider({
                         <option value="not-sure">Not sure yet</option>
                       </select>
                     </div>
+
                     <div>
-                      <label
-                        htmlFor="contact-message"
-                        className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-charcoal/60"
-                      >
+                      <label htmlFor="contact-message" className={labelClass}>
                         Your Goals
                       </label>
                       <textarea
@@ -249,11 +252,15 @@ export function ContactDialogProvider({
                         name="message"
                         required
                         rows={4}
-                        placeholder="Tell me about your fitness goals, experience level, and what you're looking for..."
-                        className="w-full resize-none rounded-xl border border-charcoal/15 bg-white px-4 py-3 text-charcoal placeholder:text-charcoal/40 focus:border-coral focus:outline-none focus:ring-2 focus:ring-coral/20"
+                        placeholder="What are you working toward? Any injuries, schedule limits, or experience I should know?"
+                        className={`${fieldClass} resize-none`}
                       />
                     </div>
-                    <button type="submit" className="btn-primary w-full">
+
+                    <button
+                      type="submit"
+                      className="btn-primary w-full py-4 text-base"
+                    >
                       Send Message
                     </button>
                   </form>

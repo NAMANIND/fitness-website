@@ -3,25 +3,28 @@ import { credibilityItems } from "@/data/siteData";
 export default function CredibilityBar() {
   return (
     <div
-      className="bg-[#1A1A1A] py-4 text-center text-[10px] font-medium uppercase tracking-[0.18em] text-white sm:text-[12px] sm:tracking-[0.18em] md:py-5.5 md:text-xs md:tracking-[0.22em]"
+      className="bg-charcoal py-[clamp(0.875rem,2.5vw,1.25rem)] text-center font-medium uppercase text-white"
+      style={{
+        fontSize: "clamp(0.625rem, 2.2vw, 0.75rem)",
+        letterSpacing: "clamp(0.12em, 0.4vw, 0.22em)",
+      }}
       aria-label="Credentials and achievements"
     >
-      <p className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-12 gap-y-1 px-4 font-semibold">
+      <ul
+        className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-[clamp(1rem,4vw,2.5rem)] gap-y-2 px-[var(--page-gutter)]"
+      >
         {credibilityItems.map((item, index) => (
-          <span
-            key={item}
-            className="inline-flex items-center gap-x-12 font-semibold"
-          >
+          <li key={item} className="inline-flex items-center gap-[clamp(1rem,4vw,2.5rem)] font-semibold">
             {index > 0 && (
               <span
                 aria-hidden="true"
-                className="h-1 w-1 rounded-full bg-[#C9A882]"
-              ></span>
+                className="h-1 w-1 shrink-0 rounded-full bg-rose-gold"
+              />
             )}
             {item}
-          </span>
+          </li>
         ))}
-      </p>
+      </ul>
     </div>
   );
 }

@@ -5,7 +5,6 @@ import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import InstagramStrip from "@/components/InstagramStrip";
-import MobileStickyCTA from "@/components/MobileStickyCTA";
 import Navbar from "@/components/Navbar";
 import Packages from "@/components/Packages";
 import Programs from "@/components/Programs";
@@ -24,7 +23,7 @@ export default function Home() {
       <main id="main-content">
         <Hero />
         <CredibilityBar />
-        <div className="relative w-screen overflow-hidden">
+        <div className="relative w-full overflow-x-hidden">
           <Programs />
         </div>
         <About />
@@ -36,7 +35,6 @@ export default function Home() {
         <InstagramStrip />
       </main>
       <Footer />
-      <MobileStickyCTA />
       <ScrollReveal />
     </ContactDialogProvider>
   );

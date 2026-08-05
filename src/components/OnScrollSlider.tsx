@@ -40,43 +40,45 @@ function HorizontalScroll({
 
     const container = containerRef.current;
     const panels = panelsRef.current;
+    const mm = gsap.matchMedia();
 
-    const styles = window.getComputedStyle(container);
-    const paddingLeft = parseFloat(styles.paddingLeft) || 0;
-    const paddingRight = parseFloat(styles.paddingRight) || 180;
-    const visibleWidth = container.clientWidth - paddingLeft - paddingRight;
-    const totalContentWidth = panels.scrollWidth;
-    const scrollDistance = Math.max(0, totalContentWidth - visibleWidth);
+    mm.add("(min-width: 769px)", () => {
+      const styles = window.getComputedStyle(container);
+      const paddingLeft = parseFloat(styles.paddingLeft) || 0;
+      const paddingRight = parseFloat(styles.paddingRight) || 180;
+      const visibleWidth = container.clientWidth - paddingLeft - paddingRight;
+      const totalContentWidth = panels.scrollWidth;
+      const scrollDistance = Math.max(0, totalContentWidth - visibleWidth);
 
-    const animation = gsap.to(panels, {
-      x: -scrollDistance,
-      ease: ease,
-      scrollTrigger: {
-        trigger: container,
-        pin: true,
-        scrub: scrubValue,
-        end: `+=${scrollDistance}`,
-        invalidateOnRefresh: true,
-        anticipatePin: 1,
-      },
+      gsap.set(panels, { x: 0 });
+
+      const animation = gsap.to(panels, {
+        x: -scrollDistance,
+        ease,
+        scrollTrigger: {
+          trigger: container,
+          pin: true,
+          scrub: scrubValue,
+          end: `+=${scrollDistance}`,
+          invalidateOnRefresh: true,
+          anticipatePin: 1,
+        },
+      });
+
+      const refresh = () => ScrollTrigger.refresh();
+      window.addEventListener("load", refresh);
+      window.addEventListener("resize", refresh);
+
+      return () => {
+        animation.kill();
+        gsap.set(panels, { x: 0 });
+        window.removeEventListener("load", refresh);
+        window.removeEventListener("resize", refresh);
+      };
     });
 
-    const refresh = () => ScrollTrigger.refresh();
-
-    window.addEventListener("load", refresh);
-    window.addEventListener("resize", refresh);
-
-    return () => {
-      animation.kill();
-      ScrollTrigger.getAll().forEach((trigger) => {
-        if (trigger.trigger === container) {
-          trigger.kill();
-        }
-      });
-      window.removeEventListener("load", refresh);
-      window.removeEventListener("resize", refresh);
-    };
-  }, [items.length, scrubValue, ease, sidePaddingVW]);
+    return () => mm.revert();
+  }, [items.length, scrubValue, ease, sidePaddingVW, containerRef]);
 
   return (
     <div
