@@ -1,7 +1,29 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import ContactButton from "@/components/ContactButton";
 import { packages, sectionCopy } from "@/data/siteData";
 
 export default function Packages() {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [cardsVisible, setCardsVisible] = useState(false);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setCardsVisible(true);
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+    );
+
+    observer.observe(grid);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
       id="pricing"
@@ -17,31 +39,44 @@ export default function Packages() {
           <p className="section-subheading">{sectionCopy.pricing.subheading}</p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-3 sm:gap-5">
-          {packages.map((pkg) => (
-            <article
-              key={pkg.name}
-              className={`reveal relative flex min-h-62 flex-col items-center justify-center rounded-3xl px-6 py-10 text-center ${
-                pkg.featured
-                  ? "bg-black text-white"
-                  : "border border-black/15 bg-white text-black"
-              }`}
-            >
-              {pkg.badge && (
-                <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-coral px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
-                  {pkg.badge}
-                </span>
-              )}
-              <p className=" text-4xl font-extrabold md:text-5xl leading-none">
-                {pkg.price}
-              </p>
-              <p
-                className={`mt-2 text-xl ${pkg.featured ? "text-white/80" : "text-black/70"}`}
+        <div
+          ref={gridRef}
+          className={`reveal grid gap-4 sm:grid-cols-3 sm:gap-5 ${cardsVisible ? "visible" : ""}`}
+          role="radiogroup"
+          aria-label="Choose a billing plan"
+        >
+          {packages.map((pkg, index) => {
+            const selected = selectedIndex === index;
+
+            return (
+              <button
+                key={pkg.name}
+                type="button"
+                role="radio"
+                aria-checked={selected}
+                onClick={() => setSelectedIndex(index)}
+                className={`relative flex min-h-62 w-full cursor-pointer flex-col items-center justify-center rounded-3xl border-2 px-6 py-10 text-center transition-all duration-300 ease-in-out motion-reduce:transition-none ${
+                  selected
+                    ? "border-black bg-black text-white"
+                    : "border-black/15 bg-white text-black hover:border-black/30"
+                }`}
               >
-                {pkg.billing}
-              </p>
-            </article>
-          ))}
+                {pkg.badge && (
+                  <span className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 rounded-full bg-coral px-3 py-1 text-xs font-bold uppercase tracking-wider text-white">
+                    {pkg.badge}
+                  </span>
+                )}
+                <p className="text-4xl leading-none font-extrabold md:text-5xl">
+                  {pkg.price}
+                </p>
+                <p
+                  className={`mt-2 text-xl transition-colors duration-300 ease-in-out motion-reduce:transition-none ${selected ? "text-white/80" : "text-black/70"}`}
+                >
+                  {pkg.billing}
+                </p>
+              </button>
+            );
+          })}
         </div>
 
         <div className="reveal mt-10 flex justify-center">

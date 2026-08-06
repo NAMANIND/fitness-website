@@ -216,9 +216,6 @@ export const heroContent = {
 export const brandTagline =
   "Strong looks good on you. Let's build it your way.";
 
-export const footerTagline =
-  "Built for real women. Real results. No shortcuts.";
-
 export const shopPromoCode = "SEZZY";
 export const shopDiscount = "20% OFF EVERYTHING";
 

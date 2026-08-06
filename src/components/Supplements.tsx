@@ -9,7 +9,7 @@ export default function Supplements() {
   return (
     <section
       id="supplements"
-      className="section-padding bg-black"
+      className="pb-20 pt-10 md:pb-28 md:pt-16 bg-black"
       aria-labelledby="supplements-heading"
     >
       <div className="mx-auto max-w-7xl px-4 md:px-8">

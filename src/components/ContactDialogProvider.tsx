@@ -136,7 +136,10 @@ export function ContactDialogProvider({
               </button>
             </div>
 
-            <div className="min-h-0 flex-1 overflow-y-auto px-5 py-5 sm:px-6 sm:py-6">
+            <div
+              className="min-h-0 flex-1 overflow-y-auto px-5 py-5 sm:px-6 sm:py-6"
+              data-lenis-prevent
+            >
               {submitted ? (
                 <div className="rounded-2xl border border-coral/20 bg-coral/5 p-8 text-center">
                   <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-coral/10">

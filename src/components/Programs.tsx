@@ -13,7 +13,8 @@ function ProgramsCarousel() {
     <div className="relative w-full pt-4">
       <div
         ref={carouselRef}
-        className="no-scrollbar flex snap-x snap-mandatory scroll-smooth overflow-x-auto overflow-y-visible"
+        className="no-scrollbar flex snap-x snap-mandatory overflow-x-auto overflow-y-visible"
+        data-lenis-prevent
         onScroll={(event) => {
           const target = event.currentTarget;
           const slideWidth = target.clientWidth;
@@ -82,7 +83,7 @@ export default function Programs() {
               items={[...exercisePrograms]}
               className="h-full w-full"
               containerRef={sectionRef}
-              scrubValue={1}
+              scrubValue={0.6}
               ease="none"
             />
           </div>

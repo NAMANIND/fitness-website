@@ -10,7 +10,7 @@ export default function Shop() {
   return (
     <section
       id="shop"
-      className="section-padding bg-black"
+      className="pt-20 pb-10 md:pt-28 md:pb-16 bg-black"
       aria-labelledby="shop-heading"
     >
       <div className="mx-auto max-w-7xl px-4 md:px-8">
@@ -31,8 +31,7 @@ export default function Shop() {
 
         <div className="reveal mt-12 text-center">
           <p className="font-section text-4xl font-bold uppercase tracking-tight text-white md:text-6xl">
-            Use code{" "}
-            <span className="text-coral">{shopPromoCode}</span> for{" "}
+            Use code <span className="text-coral">{shopPromoCode}</span> for{" "}
             {shopDiscount}
           </p>
           <a

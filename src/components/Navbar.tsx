@@ -41,7 +41,10 @@ export default function Navbar() {
             aria-modal="true"
             aria-label="Mobile navigation menu"
           >
-            <div className="flex h-full flex-col overflow-y-auto px-6 pb-8 pt-[calc(var(--nav-height)+env(safe-area-inset-top,0px))]">
+            <div
+              className="flex h-full flex-col overflow-y-auto px-6 pb-8 pt-[calc(var(--nav-height)+env(safe-area-inset-top,0px))]"
+              data-lenis-prevent
+            >
               <ul className="flex flex-col gap-1">
                 {navLinks.map((link) => (
                   <li key={link.href}>

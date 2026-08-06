@@ -61,7 +61,7 @@ function HorizontalScroll({
           scrub: scrubValue,
           end: `+=${scrollDistance}`,
           invalidateOnRefresh: true,
-          anticipatePin: 1,
+          anticipatePin: 0,
         },
       });
 

@@ -3,11 +3,7 @@
 import Link from "next/link";
 import ContactButton from "@/components/ContactButton";
 import { InstagramIcon } from "@/components/SocialIcons";
-import {
-  footerLegalLinks,
-  footerNavLinks,
-  footerTagline,
-} from "@/data/siteData";
+import { footerLegalLinks, footerNavLinks } from "@/data/siteData";
 import { siteConfig } from "@/lib/seo";
 
 export default function Footer() {
@@ -22,9 +18,6 @@ export default function Footer() {
             >
               Sara<span className="text-coral">.</span>
             </Link>
-            <p className="mt-4 text-sm leading-relaxed text-white/60">
-              {footerTagline}
-            </p>
             <ContactButton className="mt-6">Contact Us</ContactButton>
           </div>
 
