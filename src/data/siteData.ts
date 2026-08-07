@@ -185,12 +185,12 @@ export const supplementCtaUrl =
   "https://ehplabs.com.au/?utm_campaign=kol&platform=grin&link_id=2062501&token=8uMA6JmUUQdfhroSeHyMtC7DtvK6R03b&contact_id=a38c9a33-fcaa-4332-8909-875e9569ccf8&attribution_window=30";
 
 export const instagramTiles = [
-  splash(400, 400, "fitness"),
-  splash(400, 400, "gym"),
-  splash(400, 400, "yoga"),
-  splash(400, 400, "running"),
-  splash(400, 400, "weights"),
-  splash(400, 400, "workout"),
+  "/images/footer/footer-1.jpg",
+  "/images/footer/footer-2.jpg",
+  "/images/footer/footer-3.jpg",
+  "/images/footer/footer-4.jpg",
+  "/images/footer/footer-5.jpg",
+  "/images/footer/footer-6.jpg",
 ] as const;
 
 export const images = {
