@@ -1,9 +1,14 @@
+"use client";
+
 import ContactButton from "@/components/ContactButton";
-import { scarcityMessage, sectionCopy } from "@/data/siteData";
+import { useSiteProfile } from "@/components/SiteProfileProvider";
 
 export default function FinalCTA() {
+  const { profile } = useSiteProfile();
+
   return (
     <section
+      id="final-cta"
       className="section-padding bg-white"
       aria-labelledby="final-cta-heading"
     >
@@ -12,10 +17,10 @@ export default function FinalCTA() {
           Ready To Start Your <span className="text-coral">Transformation</span>
         </h2>
         <p className="section-subheading max-w-3xl mx-auto text-lg">
-          {sectionCopy.finalCta.subheading}
+          {profile.sectionCopy.finalCta.subheading}
         </p>
         <p className="mt-6 text-xs font-bold uppercase tracking-widest text-black">
-          {scarcityMessage}
+          {profile.scarcityMessage}
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <ContactButton className="px-8 py-4 btn-primary">

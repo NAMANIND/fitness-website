@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { type ReactNode, useEffect, useRef } from "react";
 import Lenis from "lenis";
 import { gsap } from "gsap";
@@ -7,9 +8,13 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "lenis/dist/lenis.css";
 
 export default function LenisProvider({ children }: { children: ReactNode }) {
+  const pathname = usePathname();
   const lenisRef = useRef<Lenis | null>(null);
+  const isAdmin = pathname.startsWith("/admin");
 
   useEffect(() => {
+    if (isAdmin) return;
+
     gsap.registerPlugin(ScrollTrigger);
 
     const lenis = new Lenis({
@@ -41,9 +46,10 @@ export default function LenisProvider({ children }: { children: ReactNode }) {
     return () => {
       gsap.ticker.remove(onTick);
       lenis.destroy();
+      lenisRef.current = null;
       ScrollTrigger.killAll();
     };
-  }, []);
+  }, [isAdmin]);
 
   return children;
 }

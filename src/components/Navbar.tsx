@@ -5,11 +5,18 @@ import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import ContactButton from "@/components/ContactButton";
 import { navLinks } from "@/data/siteData";
+import { useSiteProfile } from "@/components/SiteProfileProvider";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { profile, href } = useSiteProfile();
+  const shortName = profile.brand.shortName;
+  const navItems = navLinks.map((link) => ({
+    ...link,
+    href: href(link.href),
+  }));
 
   useEffect(() => {
     setMounted(true);
@@ -46,7 +53,7 @@ export default function Navbar() {
               data-lenis-prevent
             >
               <ul className="flex flex-col gap-1">
-                {navLinks.map((link) => (
+                {navItems.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
@@ -76,9 +83,7 @@ export default function Navbar() {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-[100] pt-[env(safe-area-inset-top,0px)] transition-[background-color,box-shadow,backdrop-filter] duration-300 ${
-          solid
-            ? "bg-charcoal/95 shadow-sm backdrop-blur-md"
-            : "bg-transparent"
+          solid ? "bg-charcoal/95 shadow-sm backdrop-blur-md" : "bg-transparent"
         }`}
       >
         <nav
@@ -86,15 +91,16 @@ export default function Navbar() {
           className="mx-auto flex h-[var(--nav-height)] max-w-7xl items-center justify-between px-[var(--page-gutter)]"
         >
           <Link
-            href="/#home"
+            href={href("/#home")}
             className="font-display text-xl font-bold uppercase tracking-wide text-white"
             onClick={() => setMenuOpen(false)}
           >
-            Sara<span className="text-coral">.</span>
+            {shortName}
+            <span className="text-coral">.</span>
           </Link>
 
           <ul className="hidden items-center gap-8 lg:flex">
-            {navLinks.map((link) => (
+            {navItems.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}

@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
-import LegalPageLayout, { LegalSection } from "@/components/LegalPageLayout";
-import { siteConfig } from "@/lib/seo";
+import LegalPageLayout, {
+  LEGAL_CONTACT_EMAIL,
+  LegalSection,
+} from "@/components/LegalPageLayout";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
-  description: `Terms of Service for ${siteConfig.name} online fitness coaching programs.`,
+  description: "Terms of Service for this website and its online programs.",
   robots: { index: false, follow: true },
 };
 
@@ -15,11 +17,11 @@ export default function TermsPage() {
       lastUpdated="June 10, 2026"
       current="terms"
     >
-      <LegalSection title="Coaching Services">
+      <LegalSection title="Services">
         <p>
-          By enrolling in any coaching program with {siteConfig.name}, you agree
-          to participate in good faith and provide accurate health information.
-          Coaching is not a substitute for medical advice, diagnosis, or
+          By enrolling in any program offered through this website, you agree to
+          participate in good faith and provide accurate health information.
+          These services are not a substitute for medical advice, diagnosis, or
           treatment. Consult your physician before starting any exercise
           program.
         </p>
@@ -45,9 +47,9 @@ export default function TermsPage() {
 
       <LegalSection title="Limitation of Liability">
         <p>
-          {siteConfig.name} is not liable for any injury, loss, or damage arising
-          from participation in coaching programs. You assume full responsibility
-          for your health and fitness decisions.
+          We are not liable for any injury, loss, or damage arising from
+          participation in programs offered through this website. You assume full
+          responsibility for your health and fitness decisions.
         </p>
       </LegalSection>
 
@@ -55,10 +57,10 @@ export default function TermsPage() {
         <p>
           Questions about these terms? Email{" "}
           <a
-            href={`mailto:${siteConfig.email}`}
-            className="font-semibold text-coral hover:underline"
+            href={`mailto:${LEGAL_CONTACT_EMAIL}`}
+            className="font-semibold text-charcoal underline-offset-2 hover:underline"
           >
-            {siteConfig.email}
+            {LEGAL_CONTACT_EMAIL}
           </a>
           .
         </p>

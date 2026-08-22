@@ -1,0 +1,82 @@
+import type { SiteProfile } from "@/lib/profile";
+import { siteConfig } from "@/lib/seo";
+import {
+  aboutContent,
+  aboutStats,
+  brandTagline,
+  clientResults,
+  credibilityItems,
+  exercisePrograms,
+  heroContent,
+  images,
+  instagramTiles,
+  packages,
+  scarcityMessage,
+  sectionCopy,
+  shopCtaUrl,
+  shopDiscount,
+  shopItems,
+  shopPromoCode,
+  supplementCtaUrl,
+  supplementItems,
+} from "@/data/siteData";
+
+export const saraProfile: SiteProfile = {
+  username: "sara",
+  brand: {
+    shortName: "Sara",
+    name: siteConfig.name,
+    firstName: "Sara",
+    tagline: brandTagline,
+  },
+  seo: {
+    title: siteConfig.title,
+    description: siteConfig.description,
+    locale: siteConfig.locale,
+    instagram: siteConfig.instagram,
+    instagramUrl: siteConfig.instagramUrl,
+    email: siteConfig.email,
+    keywords: [...siteConfig.keywords],
+  },
+  images: {
+    hero: images.hero,
+    about: images.about,
+    og: images.og,
+  },
+  hero: {
+    heading: { ...heroContent.heading },
+    subtext: heroContent.subtext,
+    primaryCta: { ...heroContent.primaryCta },
+    secondaryCta: { ...heroContent.secondaryCta },
+    socialProof: heroContent.socialProof,
+  },
+  about: {
+    eyebrow: aboutContent.eyebrow,
+    heading: aboutContent.heading,
+    headingAccent: aboutContent.headingAccent,
+    paragraphs: [...aboutContent.paragraphs],
+    tagline: aboutContent.tagline,
+    stats: aboutStats.map((stat) => ({ ...stat })),
+  },
+  programs: exercisePrograms.map((program) => ({ ...program })),
+  packages: packages.map((pkg) => ({ ...pkg })),
+  testimonials: clientResults.map((item) => ({ ...item })),
+  credibility: [...credibilityItems],
+  shop: {
+    ctaUrl: shopCtaUrl,
+    promoCode: shopPromoCode,
+    discount: shopDiscount,
+    items: shopItems.map((item) => ({ ...item })),
+  },
+  supplements: {
+    ctaUrl: supplementCtaUrl,
+    items: supplementItems.map((item) => ({ ...item })),
+  },
+  instagramTiles: [...instagramTiles],
+  scarcityMessage,
+  sectionCopy: {
+    programs: { ...sectionCopy.programs },
+    pricing: { ...sectionCopy.pricing },
+    finalCta: { ...sectionCopy.finalCta },
+  },
+};

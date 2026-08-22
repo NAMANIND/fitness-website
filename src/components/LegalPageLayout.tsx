@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+export const LEGAL_CONTACT_EMAIL = "hello@example.com";
+
 const policyLinks = [
   { label: "Privacy Policy", href: "/privacy", key: "privacy" as const },
   { label: "Terms of Service", href: "/terms", key: "terms" as const },
@@ -28,9 +30,9 @@ export default function LegalPageLayout({
         >
           <Link
             href="/"
-            className="shrink-0 font-display text-xl font-bold uppercase tracking-wide text-white"
+            className="text-sm font-medium text-white/70 transition hover:text-white"
           >
-            Sara<span className="text-coral">.</span>
+            Home
           </Link>
 
           <nav aria-label="Legal pages">
@@ -75,20 +77,23 @@ export default function LegalPageLayout({
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
               <Link
                 href={current === "privacy" ? "/terms" : "/privacy"}
-                className="font-semibold text-charcoal transition hover:text-coral"
+                className="font-semibold text-charcoal transition hover:text-charcoal/70"
               >
                 {current === "privacy" ? "Terms of Service" : "Privacy Policy"}
               </Link>
               <Link
                 href="/"
-                className="text-charcoal/60 transition hover:text-coral"
+                className="text-charcoal/60 transition hover:text-charcoal"
               >
                 Back to Home
               </Link>
             </div>
-            <Link href="/#contact" className="btn-primary w-full sm:w-fit">
-              Contact Sara
-            </Link>
+            <a
+              href={`mailto:${LEGAL_CONTACT_EMAIL}`}
+              className="text-sm font-semibold text-charcoal transition hover:text-charcoal/70"
+            >
+              {LEGAL_CONTACT_EMAIL}
+            </a>
           </div>
         </main>
       </section>

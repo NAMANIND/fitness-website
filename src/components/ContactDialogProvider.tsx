@@ -9,7 +9,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { packages } from "@/data/siteData";
+import { useSiteProfile } from "@/components/SiteProfileProvider";
 
 type ContactDialogContextValue = {
   openContact: () => void;
@@ -42,6 +42,9 @@ export function ContactDialogProvider({
   const [isOpen, setIsOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
+  const { profile } = useSiteProfile();
+  const packages = profile.packages;
+  const firstName = profile.brand.firstName;
 
   const openContact = useCallback(() => {
     setSubmitted(false);
@@ -105,7 +108,7 @@ export function ContactDialogProvider({
             <div className="flex shrink-0 items-start justify-between border-b border-charcoal/8 px-5 py-5 sm:px-6">
               <div>
                 <p className="text-xs font-bold uppercase tracking-[0.2em] text-coral">
-                  Work with Sara
+                  Work with {firstName}
                 </p>
                 <h2
                   id="contact-dialog-title"
@@ -161,7 +164,7 @@ export function ContactDialogProvider({
                     You&apos;re on the list
                   </p>
                   <p className="mt-2 text-sm leading-relaxed text-charcoal/70">
-                    Sara will reach out within 24 hours to talk goals and find
+                    {firstName} will reach out within 24 hours to talk goals and find
                     the right fit.
                   </p>
                   <button
@@ -175,7 +178,7 @@ export function ContactDialogProvider({
               ) : (
                 <>
                   <p className="mb-6 text-sm leading-relaxed text-charcoal/65 sm:text-base">
-                    Share a few details and Sara will follow up with next steps.
+                    Share a few details and {firstName} will follow up with next steps.
                   </p>
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="grid gap-5 sm:grid-cols-2">

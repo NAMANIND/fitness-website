@@ -1,7 +1,11 @@
-import Image from "next/image";
-import { clientResults, sectionCopy } from "@/data/siteData";
+"use client";
+
+import SiteImage from "@/components/SiteImage";
+import { useSiteProfile } from "@/components/SiteProfileProvider";
 
 export default function Testimonials() {
+  const { testimonials } = useSiteProfile().profile;
+
   return (
     <section
       id="testimonials"
@@ -17,14 +21,14 @@ export default function Testimonials() {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {clientResults.map((result) => (
+          {testimonials.map((result) => (
             <article
               key={result.name}
               className="reveal overflow-hidden rounded-3xl"
             >
               <div className="grid grid-cols-2 gap-1 bg-black">
                 <div className="relative aspect-[3/4]">
-                  <Image
+                  <SiteImage
                     src={result.beforeImage}
                     alt={`${result.name} before transformation`}
                     fill
@@ -36,7 +40,7 @@ export default function Testimonials() {
                   </span>
                 </div>
                 <div className="relative aspect-[3/4]">
-                  <Image
+                  <SiteImage
                     src={result.afterImage}
                     alt={`${result.name} after coaching`}
                     fill

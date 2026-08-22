@@ -1,12 +1,11 @@
-import ReelVideo from "@/components/ReelVideo";
-import {
-  shopCtaUrl,
-  shopDiscount,
-  shopItems,
-  shopPromoCode,
-} from "@/data/siteData";
+"use client";
+
+import ReelSlot from "@/components/ReelSlot";
+import { useSiteProfile } from "@/components/SiteProfileProvider";
 
 export default function Shop() {
+  const { shop } = useSiteProfile().profile;
+
   return (
     <section
       id="shop"
@@ -22,20 +21,20 @@ export default function Shop() {
         </div>
 
         <div className="grid gap-6 sm:grid-cols-3">
-          {shopItems.map((item) => (
-            <div key={item.video} className="reveal">
-              <ReelVideo src={item.video} poster={item.poster} alt={item.alt} />
+          {shop.items.map((item, index) => (
+            <div key={item.instagramUrl ?? item.video ?? item.poster ?? index} className="reveal">
+              <ReelSlot item={item} />
             </div>
           ))}
         </div>
 
         <div className="reveal mt-12 text-center">
           <p className="font-section text-4xl font-bold uppercase tracking-tight text-white md:text-6xl">
-            Use code <span className="text-coral">{shopPromoCode}</span> for{" "}
-            {shopDiscount}
+            Use code <span className="text-coral">{shop.promoCode}</span> for{" "}
+            {shop.discount}
           </p>
           <a
-            href={shopCtaUrl}
+            href={shop.ctaUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="btn-primary mt-8 inline-flex px-20 py-5 text-2xl font-bold uppercase tracking-tight"

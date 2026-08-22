@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
-import LegalPageLayout, { LegalSection } from "@/components/LegalPageLayout";
-import { siteConfig } from "@/lib/seo";
+import LegalPageLayout, {
+  LEGAL_CONTACT_EMAIL,
+  LegalSection,
+} from "@/components/LegalPageLayout";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: `Privacy Policy for ${siteConfig.name} online fitness coaching services.`,
+  description: "Privacy Policy for this website and its online services.",
   robots: { index: false, follow: true },
 };
 
@@ -17,18 +19,17 @@ export default function PrivacyPage() {
     >
       <LegalSection title="Information We Collect">
         <p>
-          When you request a free workout, contact Sara, or enroll in a coaching
-          program through {siteConfig.name}&apos;s website, we may collect your
-          name, email address, phone number if provided, and any information you
-          voluntarily share in forms or coaching applications.
+          When you submit a form, request information, or enroll in a program
+          through this website, we may collect your name, email address, phone
+          number if provided, and any information you voluntarily share.
         </p>
       </LegalSection>
 
       <LegalSection title="How We Use Your Information">
         <p>
           We use your information to deliver requested content, respond to
-          inquiries, communicate about coaching services, and improve our
-          website. We do not sell your personal data to third parties.
+          inquiries, communicate about services, and improve this website. We do
+          not sell your personal data to third parties.
         </p>
       </LegalSection>
 
@@ -52,10 +53,10 @@ export default function PrivacyPage() {
         <p>
           For privacy-related questions, contact us at{" "}
           <a
-            href={`mailto:${siteConfig.email}`}
-            className="font-semibold text-coral hover:underline"
+            href={`mailto:${LEGAL_CONTACT_EMAIL}`}
+            className="font-semibold text-charcoal underline-offset-2 hover:underline"
           >
-            {siteConfig.email}
+            {LEGAL_CONTACT_EMAIL}
           </a>
           .
         </p>

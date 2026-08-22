@@ -1,34 +1,41 @@
-import { images, packages } from "@/data/siteData";
-import { absoluteUrl, siteConfig } from "@/lib/seo";
+"use client";
+
+import { absoluteUrl } from "@/lib/seo";
+import { profileAbsoluteUrl } from "@/lib/profileSeo";
+import { useSiteProfile } from "@/components/SiteProfileProvider";
 
 export default function JsonLd() {
+  const { profile, username } = useSiteProfile();
+  const { brand, seo, images, packages } = profile;
+  const pageUrl = username ? profileAbsoluteUrl(username) : absoluteUrl("/");
+
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "WebSite",
-        "@id": `${absoluteUrl("/")}#website`,
-        url: absoluteUrl("/"),
-        name: siteConfig.name,
-        description: siteConfig.description,
-        publisher: { "@id": `${absoluteUrl("/")}#person` },
+        "@id": `${pageUrl}#website`,
+        url: pageUrl,
+        name: brand.name,
+        description: seo.description,
+        publisher: { "@id": `${pageUrl}#person` },
       },
       {
         "@type": "Person",
-        "@id": `${absoluteUrl("/")}#person`,
-        name: siteConfig.name,
+        "@id": `${pageUrl}#person`,
+        name: brand.name,
         jobTitle: "Online Personal Trainer & Fitness Coach",
-        url: absoluteUrl("/"),
+        url: pageUrl,
         image: images.hero,
-        sameAs: [siteConfig.instagramUrl],
+        sameAs: [seo.instagramUrl],
       },
       {
         "@type": "ProfessionalService",
-        "@id": `${absoluteUrl("/")}#service`,
-        name: `${siteConfig.name} Online Coaching`,
-        url: absoluteUrl("/"),
+        "@id": `${pageUrl}#service`,
+        name: `${brand.name} Online Coaching`,
+        url: pageUrl,
         image: images.hero,
-        provider: { "@id": `${absoluteUrl("/")}#person` },
+        provider: { "@id": `${pageUrl}#person` },
         areaServed: {
           "@type": "Place",
           name: "Worldwide",

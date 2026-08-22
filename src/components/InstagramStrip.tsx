@@ -1,12 +1,17 @@
-import Image from "next/image";
+"use client";
+
 import Link from "next/link";
 import ContactButton from "@/components/ContactButton";
-import { instagramTiles } from "@/data/siteData";
-import { siteConfig } from "@/lib/seo";
+import SiteImage from "@/components/SiteImage";
+import { useSiteProfile } from "@/components/SiteProfileProvider";
 
 export default function InstagramStrip() {
+  const { profile } = useSiteProfile();
+  const handle = profile.seo.instagram;
+
   return (
     <section
+      id="instagram"
       className="bg-pale-beige py-16 md:py-20"
       aria-labelledby="instagram-heading"
     >
@@ -20,22 +25,22 @@ export default function InstagramStrip() {
               Follow The Journey
             </h2>
           </div>
-          <ContactButton>Follow @fitsarax</ContactButton>
+          <ContactButton>Follow {handle}</ContactButton>
         </div>
 
         <div className="reveal grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-6 lg:gap-3">
-          {instagramTiles.map((src, index) => (
+          {profile.instagramTiles.slice(0, 6).map((src, index) => (
             <Link
-              key={src}
-              href={siteConfig.instagramUrl}
+              key={`${src}-${index}`}
+              href={profile.seo.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="group relative aspect-square overflow-hidden rounded-lg"
-              aria-label={`View Sara's Instagram post ${index + 1}`}
+              aria-label={`View ${profile.brand.firstName}'s Instagram post ${index + 1}`}
             >
-              <Image
+              <SiteImage
                 src={src}
-                alt={`Sara Fiorvento fitness content on Instagram — photo ${index + 1}`}
+                alt={`${profile.brand.name} Instagram photo ${index + 1}`}
                 fill
                 className="object-cover transition duration-300 group-hover:scale-105"
                 sizes="(max-width: 768px) 50vw, 16vw"

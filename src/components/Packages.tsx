@@ -2,12 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 import ContactButton from "@/components/ContactButton";
-import { packages, sectionCopy } from "@/data/siteData";
+import { useSiteProfile } from "@/components/SiteProfileProvider";
 
 export default function Packages() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [cardsVisible, setCardsVisible] = useState(false);
   const gridRef = useRef<HTMLDivElement>(null);
+  const { profile } = useSiteProfile();
+  const packages = profile.packages;
 
   useEffect(() => {
     const grid = gridRef.current;
@@ -36,7 +38,7 @@ export default function Packages() {
             Start Your Transformation Journey{" "}
             <span className="text-coral">Today</span>
           </h2>
-          <p className="section-subheading">{sectionCopy.pricing.subheading}</p>
+          <p className="section-subheading">{profile.sectionCopy.pricing.subheading}</p>
         </div>
 
         <div

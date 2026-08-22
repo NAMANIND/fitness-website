@@ -1,4 +1,6 @@
-import { credibilityItems } from "@/data/siteData";
+"use client";
+
+import { useSiteProfile } from "@/components/SiteProfileProvider";
 
 function CredibilityList({
   items,
@@ -31,8 +33,11 @@ function CredibilityList({
 }
 
 export default function CredibilityBar() {
+  const items = useSiteProfile().profile.credibility;
+
   return (
     <div
+      id="credibility"
       className="bg-charcoal py-[clamp(0.875rem,2.5vw,1.25rem)] font-medium uppercase text-white md:text-center"
       style={{
         fontSize: "clamp(0.625rem, 2.2vw, 0.75rem)",
@@ -40,10 +45,8 @@ export default function CredibilityBar() {
       }}
       aria-label="Credentials and achievements"
     >
-      <ul
-        className="mx-auto hidden max-w-7xl flex-wrap items-center justify-center gap-x-[clamp(1rem,4vw,2.5rem)] gap-y-2 px-[var(--page-gutter)] md:flex"
-      >
-        {credibilityItems.map((item, index) => (
+      <ul className="mx-auto hidden max-w-7xl flex-wrap items-center justify-center gap-x-[clamp(1rem,4vw,2.5rem)] gap-y-2 px-[var(--page-gutter)] md:flex">
+        {items.map((item, index) => (
           <li
             key={item}
             className="inline-flex items-center gap-[clamp(1rem,4vw,2.5rem)] font-semibold"
@@ -61,8 +64,8 @@ export default function CredibilityBar() {
 
       <div className="credibility-marquee overflow-hidden md:hidden">
         <div className="credibility-marquee-track flex w-max">
-          <CredibilityList items={credibilityItems} />
-          <CredibilityList items={credibilityItems} ariaHidden />
+          <CredibilityList items={items} />
+          <CredibilityList items={items} ariaHidden />
         </div>
       </div>
     </div>

@@ -1,15 +1,17 @@
-import Image from "next/image";
-import ContactButton from "@/components/ContactButton";
-import { exercisePrograms } from "@/data/siteData";
+"use client";
 
-export type ExerciseProgram = (typeof exercisePrograms)[number];
+import ContactButton from "@/components/ContactButton";
+import SiteImage from "@/components/SiteImage";
+import type { Program } from "@/lib/profile";
+
+export type ExerciseProgram = Program;
 
 export function ProgramsCarouselCard({
   program,
   className = "",
   imageClassName = "h-[350px] lg:h-[450px]",
 }: {
-  program: ExerciseProgram;
+  program: Program;
   className?: string;
   imageClassName?: string;
 }) {
@@ -23,7 +25,7 @@ export function ProgramsCarouselCard({
       <div
         className={`relative overflow-hidden rounded-2xl group ${imageClassName}`}
       >
-        <Image
+        <SiteImage
           src={program.image}
           alt={`${program.title} workout program`}
           fill

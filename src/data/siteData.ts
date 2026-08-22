@@ -1,7 +1,3 @@
-export function splash(width: number, height: number, keyword: string) {
-  return `https://imagesplashh.vercel.app/api/image/${width}/${height}/${keyword}`;
-}
-
 export const navLinks = [
   { label: "Home", href: "/#home" },
   { label: "About", href: "/#about" },
@@ -163,19 +159,19 @@ export const shopCtaUrl = "https://www.youngla.com/";
 export const supplementItems = [
   {
     video: "/videos/supplements/reel-1.mp4",
-    poster: splash(720, 1280, "protein supplement"),
+    poster: "",
     alt: "Sara's supplement reel — protein and recovery",
     instagramUrl: "https://www.instagram.com/reels/DZn-BDkzDlS/",
   },
   {
     video: "/videos/supplements/reel-2.mp4",
-    poster: splash(720, 1280, "vitamins"),
+    poster: "",
     alt: "Sara's supplement reel — daily vitamins",
     instagramUrl: "https://www.instagram.com/reels/DbB4EsuTlUv/",
   },
   {
     video: "/videos/supplements/reel-3.mp4",
-    poster: splash(720, 1280, "supplements"),
+    poster: "",
     alt: "Sara's supplement reel — fitness supplements",
     instagramUrl: "https://www.instagram.com/reels/DaWIpVxTaU8/",
   },

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { proxyMediaUrl } from "@/lib/imageProxy";
 
 type ReelVideoProps = {
   src: string;
@@ -42,7 +43,14 @@ export default function ReelVideo({
   if (failed) {
     return (
       <div className={`relative aspect-9/16 overflow-hidden rounded-xl ${className}`}>
-        <Image src={poster} alt={alt} fill className="object-cover" sizes="(max-width: 640px) 100vw, 33vw" />
+        <Image
+          src={proxyMediaUrl(poster)}
+          alt={alt}
+          fill
+          className="object-cover"
+          sizes="(max-width: 640px) 100vw, 33vw"
+          unoptimized
+        />
       </div>
     );
   }
@@ -70,16 +78,15 @@ export default function ReelVideo({
     >
       <video
         ref={videoRef}
+        src={proxyMediaUrl(src)}
         muted
         loop
         playsInline
         preload="metadata"
-        poster={poster}
+        poster={proxyMediaUrl(poster)}
         className="h-full w-full object-cover"
         onError={() => setFailed(true)}
-      >
-        <source src={src} type="video/mp4" />
-      </video>
+      />
 
       <span
         className={`pointer-events-none absolute bottom-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/60 text-white transition ${

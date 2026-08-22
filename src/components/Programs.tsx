@@ -3,11 +3,12 @@
 import { useRef, useState } from "react";
 import { OnScrollSlider } from "@/components/OnScrollSlider";
 import { ProgramsCarouselCard } from "@/components/ProgramsCarouselCard";
-import { exercisePrograms, sectionCopy } from "@/data/siteData";
+import { useSiteProfile } from "@/components/SiteProfileProvider";
 
 function ProgramsCarousel() {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const programs = useSiteProfile().profile.programs;
 
   return (
     <div className="relative w-full pt-4">
@@ -22,7 +23,7 @@ function ProgramsCarousel() {
           if (next !== activeIndex) setActiveIndex(next);
         }}
       >
-        {exercisePrograms.map((program) => (
+        {programs.map((program) => (
           <div
             key={program.title}
             className="w-full shrink-0 snap-center px-[var(--page-gutter)]"
@@ -41,7 +42,7 @@ function ProgramsCarousel() {
           <div
             className="absolute top-0 left-0 h-full rounded-full bg-gray-900 transition-all duration-300 ease-out"
             style={{
-              width: `${((activeIndex + 1) / exercisePrograms.length) * 100}%`,
+              width: `${((activeIndex + 1) / programs.length) * 100}%`,
             }}
           />
         </div>
@@ -52,6 +53,8 @@ function ProgramsCarousel() {
 
 export default function Programs() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const { profile } = useSiteProfile();
+  const programs = profile.programs;
 
   return (
     <section
@@ -70,7 +73,7 @@ export default function Programs() {
             <span className="text-coral">You</span>
           </h2>
           <p className="section-subheading -mt-1 text-black">
-            {sectionCopy.programs.subheading}
+            {profile.sectionCopy.programs.subheading}
           </p>
         </div>
 
@@ -80,7 +83,7 @@ export default function Programs() {
           </div>
           <div className="hidden md:block">
             <OnScrollSlider
-              items={[...exercisePrograms]}
+              items={[...programs]}
               className="h-full w-full"
               containerRef={sectionRef}
               scrubValue={0.6}
